@@ -1,2 +1,6 @@
-.vs/
+#visual studio folders
+.vs
+
+#executables folders
 x64
+Debug

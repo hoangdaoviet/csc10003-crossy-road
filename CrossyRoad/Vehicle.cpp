@@ -1,15 +1,14 @@
 #include "Vehicle.h"
 
-Vehicle::Vehicle() {
-	x = INIT_VEHICLE_X;
-	y = INIT_VEHICLE_Y;
-}
+Vehicle::Vehicle(): x(INIT_VEHICLE_X), y(INIT_VEHICLE_Y) {}
 
-int Vehicle::getX() const {
+Vehicle::Vehicle(int X, int Y): x(X), y(Y) {}
+
+int Vehicle::getX() const{
 	return x;
 }
 
-int Vehicle::getY() const {
+int Vehicle::getY() const{
 	return y;
 }
 

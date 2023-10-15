@@ -5,6 +5,9 @@
 
 class Ship : public Vehicle {
 public:
+	Ship();
+	Ship(int X, int Y);
+
 	void draw();
 };
 

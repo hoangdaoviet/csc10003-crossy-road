@@ -5,6 +5,9 @@
 
 class Car : public Vehicle {
 public:
+	Car();
+	Car(int X, int Y);
+
 	void draw();
 };
 

@@ -13,6 +13,7 @@ private:
 	int level; //current level
 public:
 	Player();
+	Player(int X = INIT_PLAYER_X, int Y = INIT_PLAYER_Y, int level_ = INIT_LEVEL, bool state_ = true);
 
 	//getters and setters
 	int getX();
@@ -29,6 +30,9 @@ public:
 	void right();
 
 	//check impact
+	bool isImpact(const Car& obj);
+	bool isOnShip(const Ship& obj);
+	void moveWithShip(const Ship& obj);
 	bool isFinish();
 	bool isDead();
 };

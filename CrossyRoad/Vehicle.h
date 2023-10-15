@@ -9,6 +9,7 @@ private:
 	int y;
 public:
 	Vehicle();
+	Vehicle(int X, int Y);
 
 	int getX() const;
 	int getY() const;

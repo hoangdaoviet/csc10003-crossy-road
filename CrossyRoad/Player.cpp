@@ -15,12 +15,20 @@ int Player::getY() {
 	return y;
 }
 
+bool Player::getState() {
+	return state;
+}
+
 void Player::setX(int X) {
 	this->x = X;
 }
 
 void Player::setY(int Y) {
 	this->y = Y;
+}
+
+void Player::setState(bool state_) {
+	this->state = state_;
 }
 
 void Player::up() {
@@ -37,24 +45,6 @@ void Player::left() {
 
 void Player::right() {
 	this->x += PLAYER_STEP;
-}
-
-bool Player::isImpactWithCar(const Car& obj) {
-	if (obj.getY() == this->y) {
-		if (obj.getX() == this->x) {
-			state = false;
-		}
-	}
-	return !state;
-}
-
-bool Player::isOnShip(const Ship& obj) {
-	if (obj.getY() == this->y) {
-		if (obj.getX() != this->x) {
-			state = false;
-		}
-	}
-	return state;
 }
 
 bool Player::isFinish() {

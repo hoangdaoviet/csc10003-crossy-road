@@ -14,18 +14,21 @@ private:
 public:
 	Player();
 
+	//getters and setters
 	int getX();
 	int getY();
+	bool getState();
 	void setX(int X);
 	void setY(int Y);
+	void setState(bool state_);
 
+	//player controls
 	void up();
 	void down();
 	void left();
 	void right();
 
-	bool isImpactWithCar(const Car& obj);
-	bool isOnShip(const Ship& obj);
+	//check impact
 	bool isFinish();
 	bool isDead();
 };

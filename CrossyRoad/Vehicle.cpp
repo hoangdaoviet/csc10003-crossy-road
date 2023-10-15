@@ -22,5 +22,5 @@ void Vehicle::setY(int Y) {
 }
 
 void Vehicle::move() {
-	this->x++;
+	this->x += VEHICLE_STEP;
 }

@@ -1,8 +1,12 @@
 #include "Vehicle.h"
 
-Vehicle::Vehicle(): x(INIT_VEHICLE_X), y(INIT_VEHICLE_Y) {}
+Vehicle::Vehicle(): 
+	x(INIT_VEHICLE_X), 
+	y(INIT_VEHICLE_Y) {}
 
-Vehicle::Vehicle(int X, int Y): x(X), y(Y) {}
+Vehicle::Vehicle(int X, int Y): 
+	x(X), 
+	y(Y) {}
 
 int Vehicle::getX() const{
 	return x;

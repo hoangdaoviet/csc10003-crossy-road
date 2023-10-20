@@ -1,5 +1,6 @@
 #visual studio folders
 .vs
+.vscode
 
 #executables folders
 x64

@@ -13,7 +13,7 @@ private:
 	int level; //current level
 public:
 	Player();
-	Player(int X = INIT_PLAYER_X, int Y = INIT_PLAYER_Y, int level_ = INIT_LEVEL, bool state_ = true);
+	Player(int X, int Y, int level_ = INIT_LEVEL, bool state_ = true);
 
 	//getters and setters
 	int getX();

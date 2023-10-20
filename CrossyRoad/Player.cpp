@@ -1,18 +1,16 @@
 #include "Player.h"
 
-Player::Player() {
-	this->x = INIT_PLAYER_X;
-	this->y = INIT_PLAYER_Y;
-	this->level = INIT_LEVEL;
-	this->state = true;
-}
+Player::Player() :
+	x(INIT_PLAYER_X),
+	y(INIT_PLAYER_Y),
+	level(INIT_LEVEL),
+	state(true) {}
 
-Player::Player(int X, int Y, int level_, bool state_) {
-	this->x = X;
-	this->y = Y;
-	this->level = level_;
-	this->state = state_;
-}
+Player::Player(int X, int Y, int level_, bool state_) :
+	x(X),
+	y(Y),
+	level(level_),
+	state(state_) {}
 
 int Player::getX() {
 	return x;

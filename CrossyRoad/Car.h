@@ -1,13 +1,14 @@
 #ifndef CAR_H
 #define CAR_H
 
-#include "Vehicle.h"
+#include "LandVehicle.h"
 
-class Car : public Vehicle {
+class Car : public LandVehicle {
 public:
 	Car();
 	Car(int X, int Y);
 
+	void move();
 	void draw();
 };
 

@@ -1,13 +1,14 @@
 #ifndef SHIP_H
 #define SHIP_H
 
-#include "Vehicle.h"
+#include "WaterVehicle.h"
 
-class Ship : public Vehicle {
+class Ship : public WaterVehicle {
 public:
 	Ship();
 	Ship(int X, int Y);
 
+	void move();
 	void draw();
 };
 

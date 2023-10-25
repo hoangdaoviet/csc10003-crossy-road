@@ -3,10 +3,6 @@
 #include <windows.h>
 #include <thread>
 
-#include "Player.h"
-#include "Vehicle.h"
-#include "Ship.h"
-#include "Car.h"
 #include "Game.h"
 
 constexpr int LEFT_LIMIT = 0;

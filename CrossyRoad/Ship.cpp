@@ -1,9 +1,15 @@
 #include "Ship.h"
 
-Ship::Ship() : Vehicle() {}
+Ship::Ship() : WaterVehicle() {}
 
-Ship::Ship(int X, int Y) : Vehicle(X, Y) {}
+Ship::Ship(int X, int Y) : WaterVehicle(X, Y) {}
 
-void Ship::draw() {
-	//draw a ship here
+void Ship::move()
+{
+	//draw here
+}
+
+void Ship::draw()
+{
+	//draw here
 }

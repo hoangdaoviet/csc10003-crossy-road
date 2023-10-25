@@ -14,5 +14,6 @@ constexpr int VEHICLE_STEP = 1;
 //GAMEPLAY
 constexpr int INIT_LEVEL = 1;
 constexpr int MAX_LEVEL = 100;
+constexpr int MAX_LANE = 10;
 
 #endif // !UTILITIES_H

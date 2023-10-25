@@ -1,9 +1,15 @@
 #include "Car.h"
 
-Car::Car() : Vehicle() {}
+Car::Car() : LandVehicle() {}
 
-Car::Car(int X, int Y) : Vehicle(X, Y) {}
+Car::Car(int X, int Y) : LandVehicle(X, Y) {}
 
-void Car::draw() {
-	//draw a car here
+void Car::move() 
+{
+	//move here
+}
+
+void Car::draw() 
+{
+	//draw here
 }

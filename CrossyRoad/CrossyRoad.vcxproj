@@ -130,17 +130,27 @@
     <ClCompile Include="Car.cpp" />
     <ClCompile Include="CrossyRoad.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Log.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Vehicle.cpp" />
+    <ClCompile Include="LandVehicle.cpp" />
     <ClCompile Include="Ship.cpp" />
+    <ClCompile Include="Train.cpp" />
+    <ClCompile Include="Truck.cpp" />
+    <ClCompile Include="WaterVehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Car.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Log.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Train.h" />
+    <ClInclude Include="Truck.h" />
     <ClInclude Include="Utilities.h" />
-    <ClInclude Include="Vehicle.h" />
+    <ClInclude Include="LandVehicle.h" />
     <ClInclude Include="Ship.h" />
+    <ClInclude Include="WaterVehicle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

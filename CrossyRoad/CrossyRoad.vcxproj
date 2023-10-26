@@ -131,7 +131,7 @@
     <ClCompile Include="CrossyRoad.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Log.cpp" />
-    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="LandVehicle.cpp" />
     <ClCompile Include="Ship.cpp" />
@@ -140,10 +140,11 @@
     <ClCompile Include="WaterVehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Cactus.h" />
     <ClInclude Include="Car.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Log.h" />
-    <ClInclude Include="Object.h" />
+    <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Train.h" />
     <ClInclude Include="Truck.h" />

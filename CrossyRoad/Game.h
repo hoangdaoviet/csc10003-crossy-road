@@ -9,7 +9,7 @@
 #include "Ship.h"
 #include "Log.h"
 #include "Train.h"
-#include "Object.h"
+#include "Obstacle.h"
 #include "Utilities.h"
 #include <thread>
 

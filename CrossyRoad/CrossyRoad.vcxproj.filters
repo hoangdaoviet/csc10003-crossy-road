@@ -45,7 +45,7 @@
     <ClCompile Include="WaterVehicle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Object.cpp">
+    <ClCompile Include="Obstacle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -80,7 +80,10 @@
     <ClInclude Include="WaterVehicle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Object.h">
+    <ClInclude Include="Obstacle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Cactus.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

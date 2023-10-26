@@ -27,3 +27,13 @@ void WaterVehicle::setY(int Y)
 {
 	this->y = Y;
 }
+
+void WaterVehicle::move(int X, int Y)
+{
+	this->x = X;
+	this->y = Y;
+}
+
+void WaterVehicle::draw()
+{
+}

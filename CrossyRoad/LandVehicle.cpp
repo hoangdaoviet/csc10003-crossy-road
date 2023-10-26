@@ -27,3 +27,13 @@ void LandVehicle::setY(int Y)
 {
 	this->y = Y;
 }
+
+void LandVehicle::move(int X, int Y)
+{
+	this->x = X;
+	this->y = Y;
+}
+
+void LandVehicle::draw()
+{
+}

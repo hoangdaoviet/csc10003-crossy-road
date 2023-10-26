@@ -4,7 +4,7 @@ Car::Car() : LandVehicle() {}
 
 Car::Car(int X, int Y) : LandVehicle(X, Y) {}
 
-void Car::move() 
+void Car::move(int X, int Y) 
 {
 	//move here
 }

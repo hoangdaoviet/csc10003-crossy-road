@@ -4,7 +4,7 @@ Ship::Ship() : WaterVehicle() {}
 
 Ship::Ship(int X, int Y) : WaterVehicle(X, Y) {}
 
-void Ship::move()
+void Ship::move(int X, int Y)
 {
 	//draw here
 }

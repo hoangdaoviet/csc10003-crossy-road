@@ -16,7 +16,7 @@ public:
 	void setX(int X);
 	void setY(int Y);
 
-	virtual void move();
+	virtual void move(int X, int Y);
 	virtual void draw();
 };
 

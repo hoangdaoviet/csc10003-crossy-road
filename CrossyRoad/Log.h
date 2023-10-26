@@ -8,7 +8,7 @@ public:
 	Log();
 	Log(int X, int Y);
 
-	void move();
+	void move(int X, int Y);
 	void draw();
 };
 

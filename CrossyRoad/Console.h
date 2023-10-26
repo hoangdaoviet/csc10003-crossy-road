@@ -82,6 +82,10 @@ public:
 		return 1;
 	}
 
+	~Console() { 
+		delete[] m_bufScreen;
+	}
+	
 protected:
 	int m_nScreenWidth;
 	int m_nScreenHeight;

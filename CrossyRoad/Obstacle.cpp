@@ -2,11 +2,13 @@
 
 Obstacle::Obstacle():
 	x(0),
-	y(0) {}
+	y(0),
+	code(-1) {}
 
-Obstacle::Obstacle(int X, int Y):
+Obstacle::Obstacle(int X, int Y, int code):
 	x(X),
-	y(Y) {}
+	y(Y),
+	code(code) {}
 
 int Obstacle::getX() const
 {
@@ -20,4 +22,5 @@ int Obstacle::getY() const
 
 void Obstacle::draw()
 {
+	//draw the obstacle here
 }

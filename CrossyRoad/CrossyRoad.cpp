@@ -8,6 +8,7 @@
 #include "Game.h"
 #include "LandVehicle.h"
 #include "HorseWagon.h"
+#include "Randomizer.h"
 
 int main() {
 	Console obj;

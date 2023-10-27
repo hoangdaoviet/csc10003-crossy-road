@@ -5,14 +5,15 @@ class Obstacle {
 private:
 	int x;
 	int y;
+	int code; //0: bush, 1: cactus, 2: rock, 3: empty wagon
 public:
 	Obstacle();
-	Obstacle(int X, int Y);
+	Obstacle(int X, int Y, int code);
 
 	int getX() const;
 	int getY() const;
 
-	virtual void draw();
+	void draw();
 };
 
 #endif // !OBSTACLE_H

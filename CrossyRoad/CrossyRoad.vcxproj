@@ -129,8 +129,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Bush.cpp" />
-    <ClCompile Include="Cactus.cpp" />
     <ClCompile Include="HorseWagon.cpp" />
     <ClCompile Include="CrossyRoad.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -142,14 +140,14 @@
     <ClCompile Include="WaterVehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Bush.h" />
-    <ClInclude Include="Cactus.h" />
     <ClInclude Include="HorseWagon.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Obstacle.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Randomizer.h" />
+    <ClInclude Include="Row.h" />
     <ClInclude Include="Train.h" />
     <ClInclude Include="Utilities.h" />
     <ClInclude Include="LandVehicle.h" />

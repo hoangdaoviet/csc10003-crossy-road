@@ -8,7 +8,7 @@
 #include <condition_variable>
 #include <math.h>
 
-#define _WIN32_WINNT 
+#define _WIN32_WINNT 0x0500
 
 class Console {
 public:
@@ -65,8 +65,6 @@ public:
 			return 0;
 		if (m_nScreenWidth > csbi.dwMaximumWindowSize.X)
 			return 0;
-		
-
 
 		// Set Physical Console Window Size
 		m_rectWindow = { 0, 0, (short) (m_nScreenWidth - 1), (short) (m_nScreenHeight - 1) };

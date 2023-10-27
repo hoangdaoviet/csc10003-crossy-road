@@ -2,8 +2,8 @@
 #define PLAYER_H
 
 #include "Utilities.h"
-#include "HorseWagon.h"
-#include "Log.h"
+#include "Car.h"
+#include "Ship.h"
 
 class Player {
 private:
@@ -30,7 +30,9 @@ public:
 	void right();
 
 	//check impact
-	bool isImpact(const HorseWagon& obj);
+	bool isImpact(const Car& obj);
+	bool isOnShip(const Ship& obj);
+	void moveWithShip(const Ship& obj);
 	bool isFinish();
 	bool isDead();
 };

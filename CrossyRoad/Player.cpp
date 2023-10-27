@@ -52,9 +52,19 @@ void Player::right() {
 	this->x += PLAYER_STEP;
 }
 
-bool Player::isImpact(const HorseWagon& obj) {
+bool Player::isImpact(const Car& obj) {
 	if ((obj.getY() == y) && (obj.getX() == x)) return true;
 	else return false;
+}
+
+bool Player::isOnShip(const Ship& obj) {
+	if ((obj.getY() == y) && (obj.getX() == x)) return true;
+	else return false;
+}
+
+void Player::moveWithShip(const Ship& obj) {
+	x = obj.getX();
+	y = obj.getY();
 }
 
 bool Player::isFinish() {

@@ -3,8 +3,10 @@
 
 #include "Player.h"
 #include "LandVehicle.h"
-#include "HorseWagon.h"
+#include "Car.h"
+#include "Truck.h"
 #include "WaterVehicle.h"
+#include "Ship.h"
 #include "Log.h"
 #include "Train.h"
 #include "Obstacle.h"

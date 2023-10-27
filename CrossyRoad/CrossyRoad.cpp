@@ -4,11 +4,13 @@
 #include <thread>
 #include <vector>
 
+#include "Console.h"
 #include "Game.h"
 #include "LandVehicle.h"
-#include "Car.h"
-#include "Truck.h"
+#include "HorseWagon.h"
 
 int main() {
-	
+	Console obj;
+	obj.ConstructConsole(MAP_WIDTH * UNIT_WIDTH, MAP_HEIGHT * UNIT_HEIGHT, CHAR_WIDTH, CHAR_HEIGHT);
+	system("pause");
 }

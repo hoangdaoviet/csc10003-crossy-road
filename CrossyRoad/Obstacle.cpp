@@ -19,8 +19,3 @@ int Obstacle::getY() const
 {
 	return y;
 }
-
-void Obstacle::draw()
-{
-	//draw the obstacle here
-}

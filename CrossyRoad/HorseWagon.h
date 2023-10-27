@@ -3,10 +3,10 @@
 
 #include "LandVehicle.h"
 
-class Car : public LandVehicle {
+class HorseWagon : public LandVehicle {
 public:
-	Car();
-	Car(int X, int Y);
+	HorseWagon();
+	HorseWagon(int X, int Y);
 
 	void move(int X, int Y);
 	void draw();

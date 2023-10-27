@@ -24,4 +24,12 @@ constexpr int INIT_LEVEL = 1;
 constexpr int MAX_LEVEL = 100;
 constexpr int MAX_LANE = 10;
 
+//GRAPHIC
+constexpr int CHAR_WIDTH = 4;
+constexpr int CHAR_HEIGHT = 4;
+constexpr int UNIT_WIDTH = 10;
+constexpr int UNIT_HEIGHT = 10;
+constexpr int MAP_WIDTH = 32;
+constexpr int MAP_HEIGHT = 18;
+
 #endif // !UTILITIES_H

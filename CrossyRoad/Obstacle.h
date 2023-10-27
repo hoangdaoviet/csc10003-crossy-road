@@ -13,7 +13,7 @@ public:
 	int getX() const;
 	int getY() const;
 
-	void draw();
+	virtual void draw() = 0;
 };
 
 #endif // !OBSTACLE_H

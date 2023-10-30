@@ -27,6 +27,7 @@ void Road::update()
 
 void Road::draw()
 {
+	//draw the road before drawing land vehicles
 	for (int i = 0; i < landVehicles.size(); ++i) {
 		landVehicles[i]->draw();
 	}

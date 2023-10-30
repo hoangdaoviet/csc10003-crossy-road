@@ -1,4 +1,5 @@
 #include "WaterVehicle.h"
+#include <thread>
 
 WaterVehicle::WaterVehicle() :
 	x(INIT_VEHICLE_X),
@@ -28,12 +29,8 @@ void WaterVehicle::setY(int Y)
 	this->y = Y;
 }
 
-void WaterVehicle::move(int X, int Y)
+void WaterVehicle::move(int timeToTravel)
 {
-	this->x = X;
-	this->y = Y;
-}
-
-void WaterVehicle::draw()
-{
+	std::this_thread::sleep_for(std::chrono::milliseconds(timeToTravel));
+	x += VEHICLE_STEP;
 }

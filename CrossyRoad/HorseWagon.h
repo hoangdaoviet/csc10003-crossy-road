@@ -8,7 +8,6 @@ public:
 	HorseWagon();
 	HorseWagon(int X, int Y);
 
-	void move(int X, int Y);
 	void draw();
 };
 

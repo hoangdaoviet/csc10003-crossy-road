@@ -10,14 +10,14 @@ constexpr int PLAYER_STEP = 1;
 constexpr int INIT_VEHICLE_X = 0;
 constexpr int INIT_VEHICLE_Y = 0;
 constexpr int VEHICLE_STEP = 1;
+constexpr int TTT_SLOW = 0; //TTT: time to travel
+constexpr int TTT_NORMAL = 1;
+constexpr int TTT_FAST = 2;
 
-//OBJECT
-constexpr int INIT_OBJECT_X = 0;
-constexpr int INIT_OBJECT_Y = 0;
-constexpr int OBJECT_BUSH = 0;
-constexpr int OBJECT_CACTUS = 1;
-constexpr int OBJECT_ROCK = 2;
-constexpr int OBJECT_EMPTY_WAGON = 3;
+//OBSTACLE
+constexpr int INIT_OBSTACLE_X = 0;
+constexpr int INIT_OBSTACLE_Y = 0;
+constexpr int OBSTACLE_MAX_PER_ROW = 10;
 
 //GAMEPLAY
 constexpr int INIT_LEVEL = 1;

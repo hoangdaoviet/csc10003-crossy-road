@@ -1,13 +1,4 @@
-#include <iostream>
-#include <conio.h>
-#include <windows.h>
-#include <thread>
-#include <vector>
-
-#include "Console.h"
 #include "Game.h"
-#include "LandVehicle.h"
-#include "Randomizer.h"
 
 int main() {
 	Console obj;

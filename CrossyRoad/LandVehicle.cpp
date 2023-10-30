@@ -1,4 +1,5 @@
 #include "LandVehicle.h"
+#include <thread>
 
 LandVehicle::LandVehicle(): 
 	x(INIT_VEHICLE_X), 
@@ -28,12 +29,10 @@ void LandVehicle::setY(int Y)
 	this->y = Y;
 }
 
-void LandVehicle::move(int X, int Y)
+void LandVehicle::move(int timeToTravel)
 {
-	this->x = X;
-	this->y = Y;
+	std::this_thread::sleep_for(std::chrono::milliseconds(timeToTravel));
+	x += VEHICLE_STEP;
 }
 
-void LandVehicle::draw()
-{
-}
+

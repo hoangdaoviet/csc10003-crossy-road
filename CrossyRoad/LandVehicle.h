@@ -16,8 +16,8 @@ public:
 	void setX(int X);
 	void setY(int Y);
 
-	virtual void move(int X, int Y);
-	virtual void draw();
+	void move(int timeToTravel);
+	virtual void draw() = 0;
 };
 
 #endif // !VEHICLE_H

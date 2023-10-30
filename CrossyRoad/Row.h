@@ -2,15 +2,15 @@
 #define ROW_H
 
 #include "Utilities.h"
-#include "Player.h"
 
 class Row {
+protected:
+	int y;
 public:
-	Row() {};
+	Row() : y(0) {}
+	Row(int y) : y(y) {}
 
-	virtual bool checkImpact(const Player& player) = 0;
 	virtual void draw() = 0;
-	virtual void update() = 0;
 };
 
 #endif // !ROW_H

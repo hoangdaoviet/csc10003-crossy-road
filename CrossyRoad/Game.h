@@ -18,7 +18,7 @@ public:
 
 	void init();
 	bool isPlayerAlive();
-	void update(int playerMove);
+	void update(int playerMove = 0);
 	void draw();
 	void endGame();
 };

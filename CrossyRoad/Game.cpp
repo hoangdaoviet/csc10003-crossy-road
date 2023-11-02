@@ -109,6 +109,40 @@ bool Game::isPlayerAlive()
 
 void Game::update(int playerMove)
 {
+	for (int i = 0; i < MAP_HEIGHT; ++i) {
+		if (row[i][0] == 1) { //road
+			if (row[i][1] == 1) {
+				char temp = map[i][0];
+				for (int j = MAP_WIDTH - 1; j >= 1; --j) {
+					map[i][j] = map[i][j - 1];
+				}
+				map[i][MAP_WIDTH - 1] = temp;
+			}
+			else if (row[i][1] == -1) {
+				char temp = map[i][0];
+				for (int j = 0; j < MAP_WIDTH - 1; ++j) {
+					map[i][j] = map[i][j + 1];
+				}
+				map[i][MAP_WIDTH - 1] = temp;
+			}
+		}
+		else if (row[i][0] == 2) { //river
+			if (row[i][1] == 1) {
+				char temp = map[i][MAP_WIDTH - 1];
+				for (int j = MAP_WIDTH - 1; j >= 1; --j) {
+					map[i][j] = map[i][j - 1];
+				}
+				map[i][0] = temp;
+			}
+			else if (row[i][1] == -1) {
+				char temp = map[i][0];
+				for (int j = 0; j < MAP_WIDTH - 1; ++j) {
+					map[i][j] = map[i][j + 1];
+				}
+				map[i][MAP_WIDTH - 1] = temp;
+			}
+		}
+	}
 }
 
 void Game::draw()

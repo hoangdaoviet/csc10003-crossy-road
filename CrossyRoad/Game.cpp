@@ -109,7 +109,6 @@ bool Game::isPlayerAlive()
 
 void Game::update(int playerMove)
 {
-	for (int i = 0; i < )
 }
 
 void Game::draw()

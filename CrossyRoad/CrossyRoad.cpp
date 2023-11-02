@@ -1,7 +1,12 @@
+#include <iostream>
+#include <thread>
+#include <conio.h>
+
+#include "Console.h"
 #include "Game.h"
 
 int main() {
-	Console obj;
-	obj.ConstructConsole(MAP_WIDTH * UNIT_WIDTH, MAP_HEIGHT * UNIT_HEIGHT, CHAR_WIDTH, CHAR_HEIGHT);
-	system("pause");
+	Game game;
+	game.init();
+	game.draw();
 }

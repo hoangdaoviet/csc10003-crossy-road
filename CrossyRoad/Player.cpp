@@ -1,16 +1,20 @@
 #include "Player.h"
 
+bool inRange(int x, int left, int right) {
+	return (x >= left && x <= right);
+}
+
 Player::Player() :
 	x(INIT_PLAYER_X),
 	y(INIT_PLAYER_Y),
 	level(INIT_LEVEL),
 	state(true) {}
 
-Player::Player(int X, int Y, int level_, bool state_) :
-	x(X),
-	y(Y),
-	level(level_),
-	state(state_) {}
+Player::Player(int x, int y, int level, bool state) :
+	x(x),
+	y(y),
+	level(level),
+	state(state) {}
 
 int Player::getX() {
 	return x;
@@ -24,16 +28,26 @@ bool Player::getState() {
 	return state;
 }
 
-void Player::setX(int X) {
-	this->x = X;
+int Player::getLevel()
+{
+	return level;
 }
 
-void Player::setY(int Y) {
-	this->y = Y;
+void Player::setX(int x) {
+	this->x = x;
 }
 
-void Player::setState(bool state_) {
-	this->state = state_;
+void Player::setY(int y) {
+	this->y = y;
+}
+
+void Player::setState(bool state) {
+	this->state = state;
+}
+
+void Player::setLevel(int level)
+{
+	this->level = level;
 }
 
 void Player::up() {
@@ -50,17 +64,4 @@ void Player::left() {
 
 void Player::right() {
 	this->x += PLAYER_STEP;
-}
-
-bool Player::isImpact(const HorseWagon& obj) {
-	if ((obj.getY() == y) && (obj.getX() == x)) return true;
-	else return false;
-}
-
-bool Player::isFinish() {
-	return level == MAX_LEVEL;
-}
-
-bool Player::isDead() {
-	return !state;
 }

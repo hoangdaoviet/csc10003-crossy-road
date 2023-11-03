@@ -12,8 +12,8 @@ constexpr int MAX_LEVEL = 100;
 
 //VEHICLE AND OBJECT
 constexpr int HORSEWAGON_LENGTH = 2;
-constexpr int VEHICLES_MIN_DIS = 8;
-constexpr int VEHICLES_MAX_DIS = 20;
+constexpr int VEHICLES_MIN_DIS = 3;
+constexpr int VEHICLES_MAX_DIS = 6;
 constexpr int LOG_MIN_LENGTH = 3;
 constexpr int LOG_MAX_LENGTH = 12;
 constexpr int OBSTACLES_MIN_DIS = 2;

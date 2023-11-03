@@ -107,23 +107,51 @@ bool Game::isPlayerAlive()
 	return true;
 }
 
-void Game::update(int playerMove)
+void Game::movePlayer(int move)
+{
+	
+}
+
+
+void Game::update(int moveDir)
 {
 	for (int i = 0; i < MAP_HEIGHT; ++i) {
 		if (row[i][0] == 1) { //road
 			if (row[i][1] == 1) {
-				char temp = map[i][0];
+				int leftmostCarPos = MAP_WIDTH;
 				for (int j = MAP_WIDTH - 1; j >= 1; --j) {
 					map[i][j] = map[i][j - 1];
+					if (map[i][j] != '-') leftmostCarPos = j;
 				}
-				map[i][MAP_WIDTH - 1] = temp;
+				if (leftmostCarPos - VEHICLES_MAX_DIS - 1 == 1) {
+					map[i][0] = map[i][1] = 'h';
+				}
+				else if (leftmostCarPos - VEHICLES_MIN_DIS - 1 >= 1) {
+					int respawn = rng(0, 1);
+					if (respawn == 0) map[i][0] = '-';
+					else if (respawn == 1) map[i][0] = map[i][1] = 'h';
+				}
+				else {
+					map[i][0] = '-';
+				}
 			}
 			else if (row[i][1] == -1) {
-				char temp = map[i][0];
+				int rightmostCarPos = 0;
 				for (int j = 0; j < MAP_WIDTH - 1; ++j) {
 					map[i][j] = map[i][j + 1];
+					if (map[i][j] != '-') rightmostCarPos = j;
 				}
-				map[i][MAP_WIDTH - 1] = temp;
+				if (rightmostCarPos + VEHICLES_MAX_DIS + 1 == MAP_WIDTH - 2) {
+					map[i][MAP_WIDTH - 1] = map[i][MAP_WIDTH - 2] = 'h';
+				}
+				else if (rightmostCarPos + VEHICLES_MIN_DIS + 1 <= MAP_WIDTH - 2 && rightmostCarPos + VEHICLES_MAX_DIS + 1 > MAP_WIDTH - 2) {
+					int respawn = rng(0, 1);
+					if (respawn == 0) map[i][MAP_WIDTH - 1] = '-';
+					else if (respawn == 1) map[i][MAP_WIDTH - 1] = map[i][MAP_WIDTH - 2] = 'h';
+				}
+				else {
+					map[i][MAP_WIDTH - 1] = '-';
+				}
 			}
 		}
 		else if (row[i][0] == 2) { //river
@@ -145,7 +173,7 @@ void Game::update(int playerMove)
 	}
 }
 
-void Game::draw()
+void Game::drawDebug()
 {
 	for (int i = 0; i < MAP_HEIGHT; ++i) {
 		for (int j =0; j < MAP_WIDTH; ++j) {

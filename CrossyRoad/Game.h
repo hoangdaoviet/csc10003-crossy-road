@@ -12,14 +12,15 @@ private:
 	int** row;
 	//row[i][0] = 0: pavement, 1: road, 2: river
 	//row[i][1] = (< 0) : go left; (> 0) : go right 
+	void movePlayer(int move = 0);
 public:
 	Game();
 	~Game();
 
 	void init();
 	bool isPlayerAlive();
-	void update(int playerMove = 0);
-	void draw();
+	void update(int moveDir = 0);
+	void drawDebug();
 	void endGame();
 };
 

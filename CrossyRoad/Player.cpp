@@ -1,9 +1,5 @@
 #include "Player.h"
 
-bool inRange(int x, int left, int right) {
-	return (x >= left && x <= right);
-}
-
 Player::Player() :
 	x(INIT_PLAYER_X),
 	y(INIT_PLAYER_Y),
@@ -47,7 +43,9 @@ void Player::setState(bool state) {
 
 void Player::setLevel(int level)
 {
-	this->level = level;
+	if (level >= 0 && level <= MAX_LEVEL) {
+		this->level = level;
+	}
 }
 
 void Player::up() {

@@ -2,6 +2,7 @@
 #define PLAYER_H
 
 #include "Utilities.h"
+#include "HorseWagon.h"
 
 class Player {
 private:

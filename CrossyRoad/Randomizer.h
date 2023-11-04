@@ -3,7 +3,8 @@
 
 #include <random>
 #include <ctime>
+#include <cstdlib>
 
-int rng(int min, int max);
+int rng(int low, int high);
 
 #endif // !RANDOMIZER_H

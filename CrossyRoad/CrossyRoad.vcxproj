@@ -137,10 +137,9 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="Obstacle.cpp" />
-    <ClCompile Include="Pavement.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="LandVehicle.cpp" />
-    <ClCompile Include="Road.cpp" />
+    <ClCompile Include="Randomizer.cpp" />
     <ClCompile Include="Rock.cpp" />
     <ClCompile Include="Train.cpp" />
     <ClCompile Include="WaterVehicle.cpp" />
@@ -154,12 +153,9 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="Obstacle.h" />
-    <ClInclude Include="Pavement.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Randomizer.h" />
-    <ClInclude Include="Road.h" />
     <ClInclude Include="Rock.h" />
-    <ClInclude Include="Row.h" />
     <ClInclude Include="Train.h" />
     <ClInclude Include="Utilities.h" />
     <ClInclude Include="LandVehicle.h" />

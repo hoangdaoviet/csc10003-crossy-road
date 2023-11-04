@@ -5,9 +5,9 @@ LandVehicle::LandVehicle():
 	x(INIT_VEHICLE_X), 
 	y(INIT_VEHICLE_Y) {}
 
-LandVehicle::LandVehicle(int X, int Y): 
-	x(X), 
-	y(Y) {}
+LandVehicle::LandVehicle(int x, int y): 
+	x(x), 
+	y(y) {}
 
 int LandVehicle::getX() const
 {
@@ -19,14 +19,14 @@ int LandVehicle::getY() const
 	return y;
 }
 
-void LandVehicle::setX(int X) 
+void LandVehicle::setX(int x) 
 {
-	this->x = X;
+	this->x = x;
 }
 
-void LandVehicle::setY(int Y) 
+void LandVehicle::setY(int y) 
 {
-	this->y = Y;
+	this->y = y;
 }
 
 void LandVehicle::move(int timeToTravel)

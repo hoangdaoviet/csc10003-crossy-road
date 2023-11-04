@@ -2,7 +2,7 @@
 
 HorseWagon::HorseWagon() : LandVehicle() {}
 
-HorseWagon::HorseWagon(int X, int Y) : LandVehicle(X, Y) {}
+HorseWagon::HorseWagon(int x, int y) : LandVehicle(x, y) {}
 
 void HorseWagon::draw() 
 {

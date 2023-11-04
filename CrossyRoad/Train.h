@@ -10,7 +10,7 @@ private:
 	bool running;
 public:
 	Train();
-	Train(int X, int Y);
+	Train(int x, int y);
 
 	int getX() const;
 	int getY() const;

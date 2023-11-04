@@ -22,7 +22,6 @@ constexpr int OBSTACLE_MAX_PER_ROW = 10;
 //GAMEPLAY
 constexpr int INIT_LEVEL = 1;
 constexpr int MAX_LEVEL = 100;
-<<<<<<< HEAD
 
 //VEHICLE AND OBJECT
 constexpr int HORSEWAGON_LENGTH = 2;
@@ -32,9 +31,7 @@ constexpr int LOG_MIN_LENGTH = 3;
 constexpr int LOG_MAX_LENGTH = 12;
 constexpr int OBSTACLES_MIN_DIS = 2;
 constexpr int OBSTACLES_MAX_DIS = 10;
-=======
 constexpr int MAX_LANE = 10;
->>>>>>> parent of ed69e5c (Major changes in gameplay implementation)
 
 //GRAPHIC
 constexpr int CHAR_WIDTH = 4;

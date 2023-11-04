@@ -1,12 +1,11 @@
 #include "Log.h"
 
-Log::Log() : WaterVehicle() {}
+Log::Log() : WaterVehicle(), length(0) {}
 
-Log::Log(int X, int Y) : WaterVehicle(X, Y) {}
+
+Log::Log(int x, int y, int length) : WaterVehicle(x, y), length(length) {}
 
 void Log::draw()
 {
-	//draw here
+
 }
-
-

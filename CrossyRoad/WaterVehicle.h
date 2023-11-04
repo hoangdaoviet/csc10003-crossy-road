@@ -9,12 +9,12 @@ private:
 	int y;
 public:
 	WaterVehicle();
-	WaterVehicle(int X, int Y);
+	WaterVehicle(int x, int y);
 
 	int getX() const;
 	int getY() const;
-	void setX(int X);
-	void setY(int Y);
+	void setX(int x);
+	void setY(int y);
 
 	void move(int timeToTravel);
 	virtual void draw() = 0;

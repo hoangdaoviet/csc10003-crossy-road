@@ -12,26 +12,23 @@ private:
 	int level; //current level
 public:
 	Player();
-	Player(int X, int Y, int level_ = INIT_LEVEL, bool state_ = true);
+	Player(int x, int y, int level = INIT_LEVEL, bool state = true);
 
 	//getters and setters
 	int getX();
 	int getY();
 	bool getState();
-	void setX(int X);
-	void setY(int Y);
-	void setState(bool state_);
+	int getLevel();
+	void setX(int x);
+	void setY(int y);
+	void setState(bool state);
+	void setLevel(int level);
 
 	//player controls
 	void up();
 	void down();
 	void left();
 	void right();
-
-	//check impact
-	bool isImpact(const HorseWagon& obj);
-	bool isFinish();
-	bool isDead();
 };
 
 #endif // !PLAYER_H

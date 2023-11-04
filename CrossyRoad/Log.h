@@ -4,9 +4,11 @@
 #include "WaterVehicle.h"
 
 class Log : public WaterVehicle {
+private:
+	int length;
 public:
 	Log();
-	Log(int X, int Y);
+	Log(int x, int y, int length);
 
 	void draw();
 };

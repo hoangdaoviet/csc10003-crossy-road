@@ -12,7 +12,7 @@
 
 class Console {
 public:
-    Console()
+	Console()
 	{
 		m_nScreenWidth = 80;
 		m_nScreenHeight = 30;
@@ -23,8 +23,8 @@ public:
 		m_sAppName = L"Default";
 	}
 
-    // fontw: font chu bn pixed chieu ngang, fonth
-    int ConstructConsole(int width, int height, int fontw, int fonth)
+	// fontw: font chu bn pixed chieu ngang, fonth
+	int ConstructConsole(int width, int height, int fontw, int fonth)
 	{
 		if (m_hConsole == INVALID_HANDLE_VALUE)
 			return 0;
@@ -43,7 +43,7 @@ public:
 		// Assign screen buffer to the console
 		if (!SetConsoleActiveScreenBuffer(m_hConsole))
 			return 0;
-		
+
 		// Set the font size now that the screen buffer has been assigned to the console
 		CONSOLE_FONT_INFOEX cfi;
 		cfi.cbSize = sizeof(cfi);
@@ -56,7 +56,7 @@ public:
 		wcscpy_s(cfi.FaceName, L"Consolas");
 		if (!SetCurrentConsoleFontEx(m_hConsole, false, &cfi))
 			return 0;
-			
+
 		// Check maximum window size
 		CONSOLE_SCREEN_BUFFER_INFO csbi;
 		if (!GetConsoleScreenBufferInfo(m_hConsole, &csbi))
@@ -67,7 +67,7 @@ public:
 			return 0;
 
 		// Set Physical Console Window Size
-		m_rectWindow = { 0, 0, (short) (m_nScreenWidth - 1), (short) (m_nScreenHeight - 1) };
+		m_rectWindow = { 0, 0, (short)(m_nScreenWidth - 1), (short)(m_nScreenHeight - 1) };
 		if (!SetConsoleWindowInfo(m_hConsole, TRUE, &m_rectWindow))
 			return 0;
 
@@ -76,20 +76,20 @@ public:
 		SetWindowLong(consoleWindow, GWL_STYLE, GetWindowLong(consoleWindow, GWL_STYLE) & ~WS_MAXIMIZEBOX & ~WS_SIZEBOX);
 
 		// Allocate memory for screen buffer
-		m_bufScreen = new CHAR_INFO[m_nScreenWidth*m_nScreenHeight];
+		m_bufScreen = new CHAR_INFO[m_nScreenWidth * m_nScreenHeight];
 		memset(m_bufScreen, 0, sizeof(CHAR_INFO) * m_nScreenWidth * m_nScreenHeight);
 
 		return 1;
 	}
 
-	~Console() { 
+	~Console() {
 		delete[] m_bufScreen;
 	}
-	
+
 protected:
 	int m_nScreenWidth;
 	int m_nScreenHeight;
-	CHAR_INFO *m_bufScreen;
+	CHAR_INFO* m_bufScreen;
 	std::wstring m_sAppName;
 	HANDLE m_hOriginalConsole;
 	CONSOLE_SCREEN_BUFFER_INFO m_OriginalConsoleInfo;

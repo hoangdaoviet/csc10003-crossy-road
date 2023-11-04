@@ -6,7 +6,7 @@
 class HorseWagon : public LandVehicle {
 public:
 	HorseWagon();
-	HorseWagon(int X, int Y);
+	HorseWagon(int x, int y);
 
 	void draw();
 };

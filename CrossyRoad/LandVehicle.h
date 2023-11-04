@@ -7,16 +7,18 @@ class LandVehicle {
 private:
 	int x;
 	int y;
+	int velocity;
 public:
 	LandVehicle();
-	LandVehicle(int x, int y);
+	LandVehicle(int x, int y, int velocity);
 
 	int getX() const;
 	int getY() const;
+	int getVelocity() const;
 	void setX(int x);
 	void setY(int y);
+	void setVelocity(int velocity);
 
-	void move(int timeToTravel);
 	virtual void draw() = 0;
 };
 

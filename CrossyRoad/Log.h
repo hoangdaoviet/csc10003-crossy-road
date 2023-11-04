@@ -8,7 +8,7 @@ private:
 	int length;
 public:
 	Log();
-	Log(int x, int y, int length);
+	Log(int x, int y, int length, int velocity);
 
 	void draw();
 };

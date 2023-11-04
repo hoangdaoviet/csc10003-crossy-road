@@ -3,8 +3,7 @@
 
 #include "Utilities.h"
 
-class Obstacle
-{
+class Obstacle {
 private:
 	int x;
 	int y;

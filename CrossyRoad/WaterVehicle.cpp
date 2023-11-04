@@ -3,11 +3,13 @@
 
 WaterVehicle::WaterVehicle() :
 	x(INIT_VEHICLE_X),
-	y(INIT_VEHICLE_Y) {}
+	y(INIT_VEHICLE_Y),
+	velocity(0) {}
 
-WaterVehicle::WaterVehicle(int x, int y) :
+WaterVehicle::WaterVehicle(int x, int y, int velocity) :
 	x(x),
-	y(y) {}
+	y(y),
+	velocity(velocity) {}
 
 int WaterVehicle::getX() const
 {
@@ -17,6 +19,11 @@ int WaterVehicle::getX() const
 int WaterVehicle::getY() const
 {
 	return y;
+}
+
+int WaterVehicle::getVelocity() const
+{
+	return velocity;
 }
 
 void WaterVehicle::setX(int x)
@@ -29,8 +36,7 @@ void WaterVehicle::setY(int y)
 	this->y = y;
 }
 
-void WaterVehicle::move(int timeToTravel)
+void WaterVehicle::setVelocity(int velocity)
 {
-	std::this_thread::sleep_for(std::chrono::milliseconds(timeToTravel));
-	x += VEHICLE_STEP;
+	this->velocity = velocity;
 }

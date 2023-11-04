@@ -3,11 +3,13 @@
 
 LandVehicle::LandVehicle(): 
 	x(INIT_VEHICLE_X), 
-	y(INIT_VEHICLE_Y) {}
+	y(INIT_VEHICLE_Y),
+	velocity(0) {}
 
-LandVehicle::LandVehicle(int x, int y): 
-	x(x), 
-	y(y) {}
+LandVehicle::LandVehicle(int x, int y, int velocity) :
+	x(x),
+	y(y),
+	velocity(velocity) {}
 
 int LandVehicle::getX() const
 {
@@ -17,6 +19,11 @@ int LandVehicle::getX() const
 int LandVehicle::getY() const
 {
 	return y;
+}
+
+int LandVehicle::getVelocity() const
+{
+	return velocity;
 }
 
 void LandVehicle::setX(int x) 
@@ -29,10 +36,9 @@ void LandVehicle::setY(int y)
 	this->y = y;
 }
 
-void LandVehicle::move(int timeToTravel)
+void LandVehicle::setVelocity(int velocity)
 {
-	std::this_thread::sleep_for(std::chrono::milliseconds(timeToTravel));
-	x += VEHICLE_STEP;
+	this->velocity = velocity;
 }
 
 

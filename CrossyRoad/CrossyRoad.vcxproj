@@ -129,17 +129,41 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bush.cpp" />
+    <ClCompile Include="Cactus.cpp" />
+    <ClCompile Include="EmptyWagon.cpp" />
+    <ClCompile Include="HorseWagon.cpp" />
     <ClCompile Include="CrossyRoad.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Log.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
+    <ClCompile Include="Pavement.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Randomizer.cpp" />
+    <ClCompile Include="LandVehicle.cpp" />
+    <ClCompile Include="Road.cpp" />
+    <ClCompile Include="Rock.cpp" />
+    <ClCompile Include="Train.cpp" />
+    <ClCompile Include="WaterVehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bush.h" />
+    <ClInclude Include="Cactus.h" />
+    <ClInclude Include="EmptyWagon.h" />
+    <ClInclude Include="HorseWagon.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Log.h" />
+    <ClInclude Include="Obstacle.h" />
+    <ClInclude Include="Pavement.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Randomizer.h" />
+    <ClInclude Include="Road.h" />
+    <ClInclude Include="Rock.h" />
+    <ClInclude Include="Row.h" />
+    <ClInclude Include="Train.h" />
     <ClInclude Include="Utilities.h" />
+    <ClInclude Include="LandVehicle.h" />
+    <ClInclude Include="WaterVehicle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

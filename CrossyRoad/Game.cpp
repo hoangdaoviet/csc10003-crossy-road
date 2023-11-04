@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #include "Game.h"
 #include <iostream>
 
@@ -186,3 +187,6 @@ void Game::drawDebug()
 void Game::endGame()
 {
 }
+=======
+#include "Game.h"
+>>>>>>> parent of ed69e5c (Major changes in gameplay implementation)

@@ -3,14 +3,14 @@
 
 #include "Utilities.h"
 
-class LandVehicle {
+class Vehicle {
 private:
 	int x;
 	int y;
 	int velocity;
 public:
-	LandVehicle();
-	LandVehicle(int x, int y, int velocity);
+	Vehicle();
+	Vehicle(int x, int y, int velocity);
 
 	int getX() const;
 	int getY() const;

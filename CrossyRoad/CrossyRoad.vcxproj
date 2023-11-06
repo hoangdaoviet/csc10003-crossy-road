@@ -138,11 +138,10 @@
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="Obstacle.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="LandVehicle.cpp" />
+    <ClCompile Include="Vehicle.cpp" />
     <ClCompile Include="Randomizer.cpp" />
     <ClCompile Include="Rock.cpp" />
     <ClCompile Include="Train.cpp" />
-    <ClCompile Include="WaterVehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bush.h" />
@@ -158,8 +157,7 @@
     <ClInclude Include="Rock.h" />
     <ClInclude Include="Train.h" />
     <ClInclude Include="Utilities.h" />
-    <ClInclude Include="LandVehicle.h" />
-    <ClInclude Include="WaterVehicle.h" />
+    <ClInclude Include="Vehicle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

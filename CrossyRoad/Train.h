@@ -2,24 +2,18 @@
 #define TRAIN_H
 
 #include "Utilities.h"
+#include "Vehicle.h"
 
-class Train {
+class Train : public Vehicle {
 private:
-	int x;
-	int y;
 	bool running;
 public:
 	Train();
-	Train(int x, int y);
+	Train(int x, int y, int velocity, bool isRunning = false);
 
-	int getX() const;
-	int getY() const;
-	bool isRunning() const;
-
-	void countDown(unsigned int time); //count down until train appear
-	void run(unsigned int time); //time of train occupying the railway
-
-	void draw(); //draw when the train is coming and running away
+	bool isRunning();
+	void setTrain(bool isRunning);
+	void countdown();
 };
 
 #endif // !TRAIN_H

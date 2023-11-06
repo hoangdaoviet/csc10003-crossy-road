@@ -1,8 +1,8 @@
 #include "HorseWagon.h"
 
-HorseWagon::HorseWagon() : LandVehicle() {}
+HorseWagon::HorseWagon() : Vehicle() {}
 
-HorseWagon::HorseWagon(int x, int y, int velocity) : LandVehicle(x, y, velocity) {}
+HorseWagon::HorseWagon(int x, int y, int velocity) : Vehicle(x, y, velocity) {}
 
 void HorseWagon::draw() 
 {

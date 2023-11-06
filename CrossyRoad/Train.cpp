@@ -1,46 +1,25 @@
 #include "Train.h"
 #include <thread>
 
-Train::Train(): 
-	x(INIT_VEHICLE_X),
-	y(INIT_VEHICLE_Y),
+Train::Train() : Vehicle(),
 	running(false) {}
 
-Train::Train(int x, int y):
-	x(x),
-	y(y),
-	running(false) {}
+Train::Train(int x, int y, int velocity, bool isRunning) : Vehicle(x, y, velocity),
+	running(isRunning) {}
 
-int Train::getX() const
-{
-	return x;
-}
-
-int Train::getY() const
-{
-	return y;
-}
-
-bool Train::isRunning() const
+bool Train::isRunning()
 {
 	return running;
 }
 
-void Train::countDown(unsigned int time)
+void Train::setTrain(bool isRunning)
 {
-	std::this_thread::sleep_for(std::chrono::seconds(time));
-	//if 5 secs remaining, red light appears
-	running = true;
+	this->running = isRunning;
 }
 
-void Train::run(unsigned int time)
+void Train::countdown()
 {
-	std::this_thread::sleep_for(std::chrono::seconds(time));
-	running = false;
+	std::this_thread::sleep_for(std::chrono::seconds(TRAIN_COUNTDOWN));
 }
 
-void Train::draw()
-{
-	//draw here
-}
 

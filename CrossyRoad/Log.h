@@ -1,9 +1,9 @@
 #ifndef LOG_H
 #define LOG_H
 
-#include "WaterVehicle.h"
+#include "Vehicle.h"
 
-class Log : public WaterVehicle {
+class Log : public Vehicle {
 private:
 	int length;
 public:

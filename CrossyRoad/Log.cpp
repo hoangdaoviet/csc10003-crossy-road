@@ -1,9 +1,9 @@
 #include "Log.h"
 
-Log::Log() : WaterVehicle(), length(0) {}
+Log::Log() : Vehicle(), length(0) {}
 
 
-Log::Log(int x, int y, int length, int velocity) : WaterVehicle(x, y, velocity), length(length) {}
+Log::Log(int x, int y, int length, int velocity) : Vehicle(x, y, velocity), length(length) {}
 
 void Log::draw()
 {

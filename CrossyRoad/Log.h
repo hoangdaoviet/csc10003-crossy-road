@@ -1,7 +1,7 @@
-#ifndef LOG_H
-#define LOG_H
+#pragma once
 
 #include "Vehicle.h"
+#include <string>
 
 class Log : public Vehicle {
 private:
@@ -11,6 +11,5 @@ public:
 	Log(int x, int y, int length, int velocity);
 
 	void draw();
+	std::string getNameOfObject();
 };
-
-#endif // !LOG_H

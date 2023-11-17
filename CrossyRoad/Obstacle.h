@@ -1,5 +1,4 @@
-#ifndef OBSTACLE_H
-#define OBSTACLE_H
+#pragma once
 
 #include "Utilities.h"
 
@@ -18,5 +17,3 @@ public:
 
 	virtual void draw() = 0;
 };
-
-#endif // !OBSTACLE_H

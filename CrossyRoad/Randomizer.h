@@ -1,10 +1,7 @@
-#ifndef RANDOMIZER_H
-#define RANDOMIZER_H
+#pragma once
 
 #include <random>
 #include <ctime>
 #include <cstdlib>
 
 int rng(int low, int high);
-
-#endif // !RANDOMIZER_H

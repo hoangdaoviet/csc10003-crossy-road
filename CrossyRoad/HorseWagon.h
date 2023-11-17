@@ -1,7 +1,7 @@
-#ifndef CAR_H
-#define CAR_H
+#pragma once
 
 #include "Vehicle.h"
+#include <string>
 
 class HorseWagon : public Vehicle {
 public:
@@ -9,6 +9,5 @@ public:
 	HorseWagon(int x, int y, int velocity);
 
 	void draw();
+	std::string getNameOfObject();
 };
-
-#endif // !CAR_H

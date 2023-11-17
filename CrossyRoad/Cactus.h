@@ -1,5 +1,4 @@
-#ifndef CACTUS_H
-#define CACTUS_H
+#pragma once
 
 #include "Obstacle.h"
 
@@ -11,5 +10,3 @@ public:
 
 	void draw();
 };
-
-#endif // !CACTUS_H

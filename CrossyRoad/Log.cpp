@@ -9,3 +9,8 @@ void Log::draw()
 {
 
 }
+
+std::string Log::getNameOfObject()
+{
+    return "Log";
+}

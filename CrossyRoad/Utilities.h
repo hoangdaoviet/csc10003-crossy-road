@@ -1,5 +1,4 @@
-#ifndef UTILITIES_H
-#define UTILITIES_H
+#pragma once
 
 //PLAYER
 constexpr int INIT_PLAYER_X = 0;
@@ -27,5 +26,3 @@ constexpr int UNIT_WIDTH = 10;
 constexpr int UNIT_HEIGHT = 10;
 constexpr int MAP_WIDTH = 32;
 constexpr int MAP_HEIGHT = 18;
-
-#endif // !UTILITIES_H

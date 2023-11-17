@@ -1,7 +1,7 @@
-#ifndef LANDVEHICLE_H
-#define LANDVEHICLE_H
+#pragma once
 
 #include "Utilities.h"
+#include <string>
 
 class Vehicle {
 private:
@@ -20,6 +20,5 @@ public:
 	void setVelocity(int velocity);
 
 	virtual void draw() = 0;
+	virtual std::string getNameOfObject() = 0;
 };
-
-#endif // !VEHICLE_H

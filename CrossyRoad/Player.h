@@ -1,5 +1,4 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#pragma once
 
 #include "Utilities.h"
 #include "HorseWagon.h"
@@ -30,5 +29,3 @@ public:
 	void left();
 	void right();
 };
-
-#endif // !PLAYER_H

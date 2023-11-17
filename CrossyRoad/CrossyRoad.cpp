@@ -2,12 +2,11 @@
 #include <thread>
 #include <conio.h>
 #include <Windows.h>
+#include "Randomizer.h"
 
-#include "Console.h"
+#include "Game.h"
 
 
 int main() {
-	Console cl;
-	cl.ConstructConsole(320, 160, 4, 4);
-	system("pause");
+	
 }

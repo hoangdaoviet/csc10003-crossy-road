@@ -1,5 +1,4 @@
-#ifndef TRAIN_H
-#define TRAIN_H
+#pragma once
 
 #include "Utilities.h"
 #include "Vehicle.h"
@@ -15,5 +14,3 @@ public:
 	void setTrain(bool isRunning);
 	void countdown();
 };
-
-#endif // !TRAIN_H

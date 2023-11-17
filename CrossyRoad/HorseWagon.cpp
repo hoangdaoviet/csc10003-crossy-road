@@ -8,3 +8,8 @@ void HorseWagon::draw()
 {
 	//draw here
 }
+
+std::string HorseWagon::getNameOfObject()
+{
+	return "Horse Wagon";
+}

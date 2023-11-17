@@ -1,5 +1,4 @@
-#ifndef BUSH_H
-#define BUSH_H
+#pragma once
 
 #include "Obstacle.h"
 
@@ -11,5 +10,3 @@ public:
 
 	void draw();
 };
-
-#endif // !BUSH_H

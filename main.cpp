@@ -1,44 +1,68 @@
-#include <iostream>
-#include <fstream>
-#include <string>
-#include <vector>
-#include <sstream>
-using namespace std;
+#include <windows.h>
+#include "GameMenu.h"
 
-int main() 
+LRESULT CALLBACK WindowProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-    ifstream file("image.txt");
-    if (!file) 
+    static GameMenu *gameMenu;
+
+    switch (uMsg)
     {
-        cout << "Can't open image";
-        return 1;
+    case WM_CREATE:
+    {
+        gameMenu = new GameMenu();
+        gameMenu->Initialize(hwnd);
+        break;
+    }
+    case WM_COMMAND:
+    {
+        int id = LOWORD(wParam);
+        gameMenu->HandleCommand(id);
+        break;
+    }
+    case WM_PAINT:
+    {
+        PAINTSTRUCT ps;
+        HDC hdc = BeginPaint(hwnd, &ps);
+        gameMenu->OnPaint(hdc);
+        EndPaint(hwnd, &ps);
+        break;
+    }
+    case WM_DESTROY:
+    {
+        delete gameMenu; // Cleanup when the window is destroyed
+        PostQuitMessage(0);
+        break;
+    }
+    default:
+        return DefWindowProc(hwnd, uMsg, wParam, lParam);
     }
 
-    vector<vector<string>> imageColors;
-    string line;
-    while (getline(file, line)) 
-    {
-        istringstream iss(line);
-        vector<string> rowColors;
-        string color;
+    return 0;
+}
 
-        while (iss >> color) 
-        {
-            rowColors.push_back(color);
-        }
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
+    // Register the window class
+    WNDCLASS windowClass = {};
+    windowClass.lpfnWndProc = WindowProc;
+    windowClass.hInstance = hInstance;
+    windowClass.lpszClassName = "GameMenuWindowClass";
+    windowClass.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+    RegisterClass(&windowClass);
 
-        imageColors.push_back(rowColors);
-    }
+    // Create the window
+    HWND hwnd = CreateWindow(
+        "GameMenuWindowClass", "CROSSY ROAD GAME",
+        WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU,
+        CW_USEDEFAULT, CW_USEDEFAULT, 1280, 720,
+        NULL, NULL, hInstance, NULL
+    );
 
-    for (const auto &rowColors : imageColors) {
-        for (const string &color : rowColors) {
-            cout << "\033[48;2;" << stoul(color.substr(1, 2), 0, 16) << ";"
-                      << stoul(color.substr(3, 2), 0, 16) << ";"
-                      << stoul(color.substr(5, 2), 0, 16) << "m";
-            cout << " ";
-        }
-
-        cout << "\033[0m" << endl;
+    // Show the window and run the message loop
+    ShowWindow(hwnd, nCmdShow);
+    MSG msg;
+    while (GetMessage(&msg, NULL, 0, 0)) {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
     }
 
     return 0;

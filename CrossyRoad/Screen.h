@@ -4,8 +4,8 @@
 
 class Screen : public handlerInput{
 public:
-    void draw(HDC hdc);
+    Screen(){};
+    virtual void draw(HDC hdc, HWND hwnd, HBITMAP hBackgroundBitmap) = 0;
     ~Screen() {}
 };
 
-Screen *mainScreen;

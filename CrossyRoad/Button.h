@@ -1,55 +1,53 @@
+#pragma once
 #include "Shape.h"
 
-class Button {
+class Button{
 private:
     int width;
     int height;
-    Shape* shape;
+    Shape *shape;
     HBITMAP image;
-    bool isPress(int x, int y, int width, int height) const {
+    bool isPress(int x, int y, int width, int height) const{
         return (x >= 0 && x <= width && y >= 0 && y <= height);
     }
-    
+
 public:
-    Button(Shape* shape, HBITMAP image) : shape(shape), image(image) {
+    Button(Shape *shape, HBITMAP image) : shape(shape), image(image){
         BITMAP bm;
         GetObject(image, sizeof(bm), &bm);
         width = bm.bmWidth;
         height = bm.bmHeight;
     }
 
-    int getWidth() const {
-        return width;
-    }
-    
-    int getHeight() const {
-        return height;
-    }
-    
-    void Draw(HDC hdc, int x, int y, int width, int height) const {
-        // Draw the shape
-        //shape->Draw(hdc, x, y, width, height);
+    int getWidth() const;
 
-        // Draw the image on top of the shape
-        if (image != nullptr) {
-            HDC hdcMem = CreateCompatibleDC(hdc);
-            HBITMAP hBitmapOld = (HBITMAP)SelectObject(hdcMem, image);
-            BitBlt(hdc, x, y, width, height, hdcMem, 0, 0, SRCCOPY);
-            SelectObject(hdcMem, hBitmapOld);
-            DeleteDC(hdcMem);
+    int getHeight() const;
+
+    void Draw(HDC hdc, int x, int y, int width, int height) const;
+
+    HBITMAP GetImage() const;
+
+    ~Button();
+
+    bool isButtonPressed(const Button &button, int x, int y, int width, int height);
+};
+
+class buttonList{
+    private:
+        Button *buttons;
+        int numButtons;
+    public:
+        buttonList(Button *buttons, int numButtons) : buttons(buttons), numButtons(numButtons){}
+
+        Button *getButtons() const{
+            return buttons;
         }
-    }
 
-    HBITMAP GetImage() const {
-        return image;
-    }
-    
-    ~Button() {
-        delete shape;
-        DeleteObject(image);
-    }
+        int getNumButtons() const{
+            return numButtons;
+        }
 
-    bool isButtonPressed(const Button& button, int x, int y, int width, int height) {
-        return button.isPress(x, y, width, height);
-    }
+        ~buttonList(){
+            delete[] buttons;
+        }
 };

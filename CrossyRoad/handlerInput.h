@@ -4,7 +4,7 @@
 
 class handlerInput{
 public:
-    virtual void handleInput(Button input) = 0;
-    virtual void changeState() = 0;
-    virtual ~handlerInput() {}
+    // virtual void handleInput(Button input) = 0;
+    // virtual void changeState() = 0;
+    // virtual ~handlerInput() {}
 };

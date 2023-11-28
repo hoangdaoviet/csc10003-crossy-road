@@ -1,65 +1,58 @@
-#include "Player.h"
+#include "player.h"
 
-Player::Player() :
-	x(INIT_PLAYER_X),
-	y(INIT_PLAYER_Y),
-	level(INIT_LEVEL),
-	state(true) {}
-
-Player::Player(int x, int y, int level, bool state) :
-	x(x),
-	y(y),
-	level(level),
-	state(state) {}
-
-int Player::getX() {
-	return x;
-}
-
-int Player::getY() {
-	return y;
-}
-
-bool Player::getState() {
-	return state;
-}
-
-int Player::getLevel()
+Player::Player()
 {
-	return level;
 }
 
-void Player::setX(int x) {
-	this->x = x;
-}
-
-void Player::setY(int y) {
-	this->y = y;
-}
-
-void Player::setState(bool state) {
-	this->state = state;
-}
-
-void Player::setLevel(int level)
+Player::Player(string fileName, int x, int y) : Sprite(fileName)
 {
-	if (level >= 0 && level <= MAX_LEVEL) {
-		this->level = level;
-	}
+	posX = x;
+	posY = y;
+	LastTimeOnLog = 0;
 }
 
-void Player::up() {
-	this->y += PLAYER_STEP;
+void Player::SetPosition(int x, int y)
+{
+	posX = x;
+	posY = y;
 }
 
-void Player::down() {
-	this->y -= PLAYER_STEP;
+int Player::GetPosX()
+{
+	return posX;
 }
 
-void Player::left() {
-	this->x -= PLAYER_STEP;
+int Player::GetPosY()
+{
+	return posY;
 }
 
-void Player::right() {
-	this->x += PLAYER_STEP;
+float Player::GetLastTimeOnLog()
+{
+	return this->LastTimeOnLog;
+}
+
+void Player::SetLastTimeOnLog(float time)
+{
+	this->LastTimeOnLog = time;
+}
+
+void Player::DrawPlayer(int x0, int y0, int x1, int y1)
+{
+    if (x0 >= render_state.width) return;
+    if (y0 >= render_state.height) return;
+
+    clip(x0, y0);
+    clip(x1, y1);
+
+    for (int y = y0; y < y1; y++)
+    {
+        unsigned int* pixel = (unsigned int*)render_state.memory + y * render_state.width + x0;
+
+        for (int x = x0; x < x1; x++)
+        {
+            int idx = 80 * (y - y0) + (x - x0);
+            *pixel++ = picture[idx];
+        }
+    }
 }

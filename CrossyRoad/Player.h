@@ -1,31 +1,22 @@
 #pragma once
+#include "utility.h"
+#include "Sprite.h"
 
-#include "Utilities.h"
-#include "HorseWagon.h"
-
-class Player {
-private:
-	int x;
-	int y;
-	bool state; //true: alive, false: dead
-	int level; //current level
+class Player : public Sprite
+{
+private:	
+	int posX;
+	int posY;
+	float LastTimeOnLog;
 public:
 	Player();
-	Player(int x, int y, int level = INIT_LEVEL, bool state = true);
+	Player(string fileName, int x, int y);
 
-	//getters and setters
-	int getX();
-	int getY();
-	bool getState();
-	int getLevel();
-	void setX(int x);
-	void setY(int y);
-	void setState(bool state);
-	void setLevel(int level);
+	void SetPosition(int x, int y);
+	int GetPosX();
+	int GetPosY();
 
-	//player controls
-	void up();
-	void down();
-	void left();
-	void right();
+	float GetLastTimeOnLog();
+	void SetLastTimeOnLog(float time);
+	void DrawPlayer(int x0, int y0, int x1, int y1);
 };

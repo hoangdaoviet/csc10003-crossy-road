@@ -18,6 +18,27 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="bush.txt" />
+    <Text Include="cactus.txt" />
+    <Text Include="deadbush.txt" />
+    <Text Include="highrock.txt" />
+    <Text Include="horsewagon.txt" />
+    <Text Include="log.txt" />
+    <Text Include="player.txt" />
+    <Text Include="rock.txt" />
+    <Text Include="water.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="player.cpp" />
+    <ClCompile Include="Sprite.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="player.h" />
+    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="utility.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -107,8 +128,9 @@
       <AdditionalIncludeDirectories>$CrossyRoad\Vehicles; $CrossyRoad\Obstacles</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ForceFileOutput>Enabled</ForceFileOutput>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -122,43 +144,13 @@
       <AdditionalIncludeDirectories>$CrossyRoad\Vehicles; $CrossyRoad\Obstacles</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <ForceFileOutput>Enabled</ForceFileOutput>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="Bush.cpp" />
-    <ClCompile Include="Cactus.cpp" />
-    <ClCompile Include="EmptyWagon.cpp" />
-    <ClCompile Include="HorseWagon.cpp" />
-    <ClCompile Include="CrossyRoad.cpp" />
-    <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Log.cpp" />
-    <ClCompile Include="Obstacle.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="Vehicle.cpp" />
-    <ClCompile Include="Randomizer.cpp" />
-    <ClCompile Include="Rock.cpp" />
-    <ClCompile Include="Train.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Bush.h" />
-    <ClInclude Include="Cactus.h" />
-    <ClInclude Include="EmptyWagon.h" />
-    <ClInclude Include="HorseWagon.h" />
-    <ClInclude Include="Console.h" />
-    <ClInclude Include="Game.h" />
-    <ClInclude Include="Log.h" />
-    <ClInclude Include="Obstacle.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="Randomizer.h" />
-    <ClInclude Include="Rock.h" />
-    <ClInclude Include="Train.h" />
-    <ClInclude Include="Utilities.h" />
-    <ClInclude Include="Vehicle.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

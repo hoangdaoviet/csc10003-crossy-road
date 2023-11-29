@@ -255,6 +255,7 @@ bool simulate_game(Input* input, float fTimeSinceStart, float fElapsedTime, Play
     int playerX = player->GetPosX();
     int playerY = player->GetPosY();
 
+
     if (pressed(BUTTON_UP))
     {
         player->SetLastTimeOnLog(0);
@@ -280,7 +281,7 @@ bool simulate_game(Input* input, float fTimeSinceStart, float fElapsedTime, Play
 
     if (playerX < 0) playerX = 0;
     if (playerX > render_state.width - CellSize) playerX = render_state.width - CellSize;
-    if (playerX < 0) playerY = 0;
+    if (playerY < 0) playerY = 0;
     if (playerY > render_state.height - CellSize - 1) playerY = render_state.height - CellSize;
 
     bool isOnLog = false;
@@ -316,14 +317,19 @@ bool simulate_game(Input* input, float fTimeSinceStart, float fElapsedTime, Play
         {
             for (int i = 0; i < vecLanes[curLane].second.size(); i++)
             {
-                int StartPosX = i * CellSize + (int)(fTimeSinceStart * velocity * CellSize);
+                if (vecLanes[curLane].second[i] == 'l')
+                {
+                    int StartPosX = i * CellSize + (int)(fTimeSinceStart * velocity * CellSize);
 
-                if (StartPosX < 0) StartPosX = render_state.width - (abs(StartPosX) % (render_state.width + CellSize));
-                else StartPosX = StartPosX % (render_state.width + CellSize) - CellSize;
+                    if (StartPosX < 0)
+                        StartPosX = render_state.width - (abs(StartPosX) % (render_state.width + CellSize));
+                    else
+                        StartPosX = StartPosX % (render_state.width + CellSize) - CellSize;
 
-                if ((StartPosX <= playerX && playerX < StartPosX + CellSize)
-                    || (StartPosX <= (playerX + CellSize - 1) && (playerX + CellSize - 1) < StartPosX + CellSize))
-                    playerX = StartPosX;
+                    if ((StartPosX <= playerX && playerX < StartPosX + CellSize)
+                        || (StartPosX <= (playerX + CellSize * 2 / 3 - 1) && (playerX + CellSize * 2 / 3 - 1) < StartPosX + CellSize))
+                        playerX = StartPosX;
+                }
             }
             player->SetLastTimeOnLog(fTimeSinceStart);
         }
@@ -412,9 +418,9 @@ bool simulate_game(Input* input, float fTimeSinceStart, float fElapsedTime, Play
         || (vecLanes[curLane].second[playerX / 80 % 19] == 'r')
         || (vecLanes[curLane].second[playerX / 80 % 19] == 'c'));
     
-    bool bl = danger[playerY * render_state.width + playerX];
+    bool bl = danger[playerY * render_state.width + playerX + 2];
     bool br = danger[playerY * render_state.width + playerX + CellSize - 2];
-    bool tl = danger[(playerY + CellSize - 1) * render_state.width + playerX];
+    bool tl = danger[(playerY + CellSize - 1) * render_state.width + playerX + 2];
     bool tr = danger[(playerY + CellSize - 1) * render_state.width + playerX + CellSize - 2];
 
     bool dead_collision = bl || br || tl || tr;

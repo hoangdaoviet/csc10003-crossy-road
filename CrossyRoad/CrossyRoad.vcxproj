@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="..\..\..\..\..\..\..\..\Downloads\reverseHorseWagon.txt" />
     <Text Include="bush.txt" />
     <Text Include="cactus.txt" />
     <Text Include="deadbush.txt" />
@@ -30,14 +31,28 @@
     <Text Include="water.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="Sprite.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Button.h" />
+    <ClInclude Include="GameMenu.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="RectangleAndEllipse.h" />
+    <ClInclude Include="Shape.h" />
+    <ClInclude Include="SimulatedGame.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="utility.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="CREDITS.bmp" />
+    <Image Include="crossyroad.bmp" />
+    <Image Include="EXIT.bmp" />
+    <Image Include="LOADGAME.bmp" />
+    <Image Include="NEWGAME.bmp" />
+    <Image Include="SETTINGS.bmp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

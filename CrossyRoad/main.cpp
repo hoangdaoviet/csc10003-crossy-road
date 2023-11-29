@@ -3,7 +3,7 @@
 #include "player.h"
 using namespace std;
 
-bool simulate_game(Input *input, float fSinceStart, float fElapsedTime, Player *player, Sprite *horse, Sprite *water, Sprite *log, Sprite *deadbush, Sprite *cactus, Sprite *bush, Sprite *rock, Sprite *highrock, bool* danger);
+bool simulate_game(Input *input, float fSinceStart, float fElapsedTime, Player *player, Sprite *rHorse, Sprite *horse, Sprite *water, Sprite *log, Sprite *deadbush, Sprite *cactus, Sprite *bush, Sprite *rock, Sprite *highrock, bool* danger);
 void FillDanger(bool* danger, int x0, int y0, int x1, int y1);
 
 LRESULT CALLBACK window_callback(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
@@ -144,6 +144,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     Sprite deadbush("deadbush.txt");
     Sprite water("water.txt");
     Sprite horse("horsewagon.txt");
+    Sprite rHorse("reverseHorseWagon.txt");
     Player player("player.txt", 80 * 8, 0);
 
     generateMap();
@@ -217,7 +218,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
         // Simulate
         fSinceStart += fElapsedTime;
-        bool dead = simulate_game(&input, fSinceStart, fElapsedTime, &player, &horse, &water, &log, &deadbush, &cactus, &bush, &rock, &highrock, danger);
+        bool dead = simulate_game(&input, fSinceStart, fElapsedTime, &player, &rHorse, &horse, &water, &log, &deadbush, &cactus, &bush, &rock, &highrock, danger);
 
         // Render
         StretchDIBits(hdc, 0, 0, render_state.width, render_state.height, 0, 0, render_state.width, render_state.height, render_state.memory, &render_state.bitmap_info, DIB_RGB_COLORS, SRCCOPY);
@@ -244,7 +245,7 @@ void FillDanger(bool* danger, int x0, int y0, int x1, int y1)
             danger[y * render_state.width + x] = true;
 }
 
-bool simulate_game(Input* input, float fTimeSinceStart, float fElapsedTime, Player *player, Sprite *horse, Sprite* water, Sprite* log, Sprite* deadbush, Sprite* cactus, Sprite* bush, Sprite* rock, Sprite* highrock, bool* danger)
+bool simulate_game(Input* input, float fTimeSinceStart, float fElapsedTime, Player *player, Sprite* rHorse, Sprite *horse, Sprite* water, Sprite* log, Sprite* deadbush, Sprite* cactus, Sprite* bush, Sprite* rock, Sprite* highrock, bool* danger)
 {
     clear_screen(0xF2C488);
 
@@ -364,12 +365,18 @@ bool simulate_game(Input* input, float fTimeSinceStart, float fElapsedTime, Play
             } break;
             case 'h':
             {
-                horse->Draw1stPartSpriteAt(StartPosX, StartPosY, StartPosX + CellSize, StartPosY + CellSize);
+                if (velocity < 0)
+                    rHorse->Draw2ndPartSpriteAt(StartPosX, StartPosY, StartPosX + CellSize, StartPosY + CellSize);
+                else
+                   horse->Draw1stPartSpriteAt(StartPosX, StartPosY, StartPosX + CellSize, StartPosY + CellSize);
                 FillDanger(danger, StartPosX, StartPosY, StartPosX + CellSize, StartPosY + CellSize);
             } break;
             case 'H':
             {
-                horse->Draw2ndPartSpriteAt(StartPosX, StartPosY, StartPosX + CellSize, StartPosY + CellSize);
+                if (velocity < 0)
+                    rHorse->Draw1stPartSpriteAt(StartPosX, StartPosY, StartPosX + CellSize, StartPosY + CellSize);
+                else 
+                    horse->Draw2ndPartSpriteAt(StartPosX, StartPosY, StartPosX + CellSize, StartPosY + CellSize);
                 FillDanger(danger, StartPosX, StartPosY, StartPosX + CellSize, StartPosY + CellSize);
             } break;
             case 'l':

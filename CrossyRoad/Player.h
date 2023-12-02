@@ -1,5 +1,5 @@
 #pragma once
-#include "utility.h"
+#include "Map.h"
 #include "Sprite.h"
 
 class Player : public Sprite
@@ -8,6 +8,7 @@ private:
 	int posX;
 	int posY;
 	float LastTimeOnLog;
+	int level;
 public:
 	Player();
 	Player(string fileName, int x, int y);
@@ -15,6 +16,9 @@ public:
 	void SetPosition(int x, int y);
 	int GetPosX();
 	int GetPosY();
+	void IncrementLevel();
+	void SetLevel(int level);
+	int GetLevel();
 
 	float GetLastTimeOnLog();
 	void SetLastTimeOnLog(float time);

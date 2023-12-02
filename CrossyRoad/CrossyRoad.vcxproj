@@ -23,28 +23,40 @@
     <Text Include="bush.txt" />
     <Text Include="cactus.txt" />
     <Text Include="deadbush.txt" />
+    <Text Include="greenlight.txt" />
     <Text Include="highrock.txt" />
     <Text Include="horsewagon.txt" />
     <Text Include="log.txt" />
     <Text Include="player.txt" />
+    <Text Include="red_light.txt" />
     <Text Include="rock.txt" />
+    <Text Include="train.txt" />
     <Text Include="water.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="GameMenu.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="player.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="SimulateGame.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="TrafficLight.cpp" />
+    <ClCompile Include="Train.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
     <ClInclude Include="GameMenu.h" />
-    <ClInclude Include="player.h" />
+    <ClInclude Include="GameSave.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="RectangleAndEllipse.h" />
+    <ClInclude Include="RNG.h" />
     <ClInclude Include="Shape.h" />
-    <ClInclude Include="SimulatedGame.h" />
+    <ClInclude Include="SimulateGame.h" />
     <ClInclude Include="Sprite.h" />
-    <ClInclude Include="utility.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="TrafficLight.h" />
+    <ClInclude Include="Train.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="CREDITS.bmp" />

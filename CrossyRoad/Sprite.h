@@ -1,5 +1,5 @@
 #pragma once
-#include "utility.h"
+#include "Map.h"
 
 class Sprite
 {

@@ -1,14 +1,20 @@
-#include "player.h"
+#include "Player.h"
 
-Player::Player()
+Player::Player() : 
+    posX(0), 
+    posY(0), 
+    LastTimeOnLog(0), 
+    level(1)
 {
 }
 
-Player::Player(string fileName, int x, int y) : Sprite(fileName)
+Player::Player(string fileName, int x, int y) : 
+    Sprite(fileName), 
+    posX(x), 
+    posY(y), 
+    LastTimeOnLog(0), 
+    level(1)
 {
-	posX = x;
-	posY = y;
-	LastTimeOnLog = 0;
 }
 
 void Player::SetPosition(int x, int y)
@@ -25,6 +31,21 @@ int Player::GetPosX()
 int Player::GetPosY()
 {
 	return posY;
+}
+
+void Player::IncrementLevel()
+{
+    this->level++;
+}
+
+void Player::SetLevel(int level)
+{
+    this->level = level;
+}
+
+int Player::GetLevel()
+{
+    return level;
 }
 
 float Player::GetLastTimeOnLog()

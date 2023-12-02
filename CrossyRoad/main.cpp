@@ -1,8 +1,8 @@
-#include "utility.h"
+#include "Map.h"
 #include "Sprite.h"
 #include "player.h"
 #include "GameMenu.h"
-#include "SimulatedGame.h"
+#include "SimulateGame.h"
 
 using namespace std;
 

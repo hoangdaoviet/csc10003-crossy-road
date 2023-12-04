@@ -326,7 +326,7 @@ bool simulate_game(Input* input, float fTimeSinceStart, float fElapsedTime,
 
         vecLight[i]->SetState(light_state);
 
-        if (train_velocity > 0)
+        if (train_velocity < 0)
             vecTrain[i]->DrawFromLeftToRight(train_posX, train_posY, train_posX + 720, train_posY + 80);
         else
             vecTrain[i]->DrawFromRightToLeft(train_posX, train_posY, train_posX + 720, train_posY + 80);
@@ -408,7 +408,7 @@ bool simulate_game(Input* input, float fTimeSinceStart, float fElapsedTime,
                 {
                     if (lane.second[i] == 'p')
                     {
-                        vecLight.push_back(new TrafficLight("red_light.txt", "greenlight.txt", RED_LIGHT, 0));
+                        vecLight.push_back(new TrafficLight("trafficlight.txt", "trafficlight.txt", RED_LIGHT, 0));
                         vecLight[idx]->SetfTimeSinceLastLight(0);
                         vecLight[idx]->SetPosition(i * CellSize, y * CellSize);
                         break;
@@ -469,7 +469,7 @@ void RunGameLoop(HDC hdc)
             {
                 if (lane.second[i] == 'p')
                 {
-                    vecLight.push_back(new TrafficLight("red_light.txt", "greenlight.txt", RED_LIGHT, 0));
+                    vecLight.push_back(new TrafficLight("trafficlight.txt", "trafficlight.txt", RED_LIGHT, 0));
                     vecLight[idx]->SetfTimeSinceLastLight(0);
                     vecLight[idx]->SetPosition(i * CellSize, y * CellSize);
                     break;

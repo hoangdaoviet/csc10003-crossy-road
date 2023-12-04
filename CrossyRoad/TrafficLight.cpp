@@ -134,7 +134,10 @@ void TrafficLight::DrawRedLight(int x0, int y0, int x1, int y1)
             for (int x = x0; x < x1; x++)
             {
                 int idx = 80 * (80 - (y - y0) - 1) + dx + (x - x0);
-                *pixel++ = RedLight[idx];
+                if (RedLight[idx] = 0xF2C488)
+                    pixel++;
+                else
+                    *pixel++ = RedLight[idx];
             }
         }
     }
@@ -159,7 +162,11 @@ void TrafficLight::DrawGreenLight(int x0, int y0, int x1, int y1)
             for (int x = x0; x < x1; x++)
             {
                 int idx = 80 * (80 - (y - y0) - 1) + dx + (x - x0);
-                *pixel++ = GreenLight[idx];
+
+                if (GreenLight[idx] == 0xF2C488)
+					pixel++;
+				else
+					*pixel++ = GreenLight[idx];
             }
         }
     }

@@ -95,6 +95,7 @@ bool simulate_game(Input* input, float fTimeSinceStart, float fElapsedTime,
         return false;
     }
 
+
     if (playerX < 0) playerX = 0;
     if (playerX > render_state.width - CellSize) playerX = render_state.width - CellSize;
     if (playerX < 0) playerY = 0;
@@ -378,8 +379,8 @@ bool simulate_game(Input* input, float fTimeSinceStart, float fElapsedTime,
     {
         for (int i = 0; i < vecTrain.size(); i++)
         {
-            delete vecTrain[i];
-            delete vecLight[i];
+            /*delete vecTrain[i];
+            delete vecLight[i];*/
         }
 
         vecTrain.clear();
@@ -431,8 +432,9 @@ bool simulate_game(Input* input, float fTimeSinceStart, float fElapsedTime,
     return false;
 }
 
-void RunGameLoop(HDC hdc)
+void RunGameLoop(HDC hdc, int dem)
 {
+    if (dem == 2 && !running)  while (true) {}
     Input input = {};
     // Initialize game objects and other necessary variables here
     Sprite log("log.txt");
@@ -565,6 +567,7 @@ void RunGameLoop(HDC hdc)
             Sleep(1000);
         delete[] danger;
     }
+    running = true;
 
     for (int i = 0; i < vecTrain.size(); i++)
     {

@@ -25,7 +25,7 @@ HBITMAP Button::GetImage() const{
 }
 
 Button::~Button(){
-    delete shape;
+    //delete shape;
     DeleteObject(image);
 }
 

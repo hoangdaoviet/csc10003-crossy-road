@@ -31,7 +31,7 @@ public:
     bool getRunningNewGame();
     void Initialize(HWND hwnd);
     void HandleCommand(int id);
-    void OnPaint(HDC hdc);
+    void OnPaint(HDC hdc, HWND hwnd);
 
     // Other member functions for handling window messages can be defined here
 };

@@ -75,7 +75,6 @@ TrafficLight::TrafficLight(string RedLight, string GreenLight, int state, float 
 {
     this->RedLight = GetPicture(RedLight);
     this->GreenLight = GetPicture(GreenLight);
-
 	this->state = state;
 }
 
@@ -134,7 +133,7 @@ void TrafficLight::DrawRedLight(int x0, int y0, int x1, int y1)
             for (int x = x0; x < x1; x++)
             {
                 int idx = 80 * (80 - (y - y0) - 1) + dx + (x - x0);
-                if (RedLight[idx] = 0xF2C488)
+                if (RedLight[idx] == 0xF2C488)
                     pixel++;
                 else
                     *pixel++ = RedLight[idx];
@@ -191,7 +190,7 @@ void TrafficLight::Draw(int x0, int y0, int x1, int y1)
 {
     switch (this->state)
     {
-    case RED_LIGHT: this->DrawRedLight(x0, y0, x1, y1); break;
-    case GREEN_LIGHT: this->DrawGreenLight(x0, y0, x1, y1); break;
+        case RED_LIGHT: this->DrawRedLight(x0, y0, x1, y1); break;
+        case GREEN_LIGHT: this->DrawGreenLight(x0, y0, x1, y1); break;
     }
 }

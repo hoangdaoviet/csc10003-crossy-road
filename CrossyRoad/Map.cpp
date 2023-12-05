@@ -1,5 +1,8 @@
 #include "Map.h"
 
+//bool running = false;
+
+
 void generateMap() {
     vecLanes.clear();
     //draw empty vecLanes

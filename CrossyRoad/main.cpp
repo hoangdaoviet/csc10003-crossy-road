@@ -6,6 +6,8 @@
 
 using namespace std;
 
+int dem = 0;
+
 LRESULT CALLBACK window_callback(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     LRESULT result = 0;
@@ -20,20 +22,46 @@ LRESULT CALLBACK window_callback(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPa
         }
         case WM_COMMAND:
         {
-            int id = LOWORD(wParam);
+         /*   int id = LOWORD(wParam);
             gameMenu->HandleCommand(id);
             if (gameMenu->getRunningNewGame())
             {
 				RunGameLoop(GetDC(hwnd));
-				//gameMenu->setRunningNewGame(false);
+				gameMenu->setRunningNewGame(false);
+
 			}
+            gameMenu = new GameMenu();
+            gameMenu->Initialize(hwnd);
+            gameMenu->OnPaint(GetDC(hwnd));
+
+            break;*/
+            int id = LOWORD(wParam);
+            dem++;
+            gameMenu->HandleCommand(id);
+            if (gameMenu->getRunningNewGame())
+            {
+              //  running = true;
+           // if (dem == 2 && running == true) while (true) {}
+                RunGameLoop(GetDC(hwnd), dem);
+                gameMenu->setRunningNewGame(false);
+
+                // Optionally, reinitialize the GameMenu after the game loop.
+                delete gameMenu;
+                gameMenu = new GameMenu();
+                gameMenu->setRunningNewGame(false);
+                gameMenu->Initialize(hwnd);
+                //running = false;
+                // Additionally, repaint the window if needed.
+                InvalidateRect(hwnd, NULL, TRUE);
+            }
             break;
         }
+
         case WM_PAINT:
         {
             PAINTSTRUCT ps;
             HDC hdc = BeginPaint(hwnd, &ps);
-            gameMenu->OnPaint(hdc);
+            gameMenu->OnPaint(hdc, hwnd);
             EndPaint(hwnd, &ps);
             break;
         }
@@ -98,7 +126,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 
         while (PeekMessage(&message, 0, 0, 0, PM_REMOVE))
         {
-
             TranslateMessage(&message);
             DispatchMessage(&message);
         }

@@ -118,8 +118,9 @@ bool GameMenu::getRunningNewGame()
 
 void GameMenu::Initialize(HWND hwnd)
 {
-    // Initialize the window handle
     this->hwnd = hwnd;
+    // Initialize the window handle
+    
     for (int i = 0; i < numButton; ++i)
         createAButton(i);
 }
@@ -147,8 +148,9 @@ void GameMenu::HandleCommand(int id)
     }
 }
 
-void GameMenu::OnPaint(HDC hdc)
+void GameMenu::OnPaint(HDC hdc, HWND hwnd)
 {
     // Handle painting of the window
     DrawBackgroundWithButtons(hdc);
+   // Initialize(hwnd);
 }

@@ -9,6 +9,7 @@
 #include <sstream>
 #include "RNG.h"
 
+
 using namespace std;
 
 static struct Button_State
@@ -24,7 +25,7 @@ enum
     BUTTON_LEFT,
     BUTTON_RIGHT,
     BUTTON_ENTER,
-
+    BUTTON_ESCAPE,
     BUTTON_COUNT,
 };
 
@@ -38,7 +39,6 @@ struct Input
 {
     Button_State buttons[BUTTON_COUNT];
 };
-
 static bool running = true;
 
 struct Render_State

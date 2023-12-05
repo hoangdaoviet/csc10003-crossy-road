@@ -578,3 +578,20 @@ void RunGameLoop(HDC hdc, int dem)
     vecTrain.resize(0);
     vecLight.resize(0);
 }
+
+void RunCreditsLoop(HDC hdc, int dem)
+{
+    HBITMAP creditsWindow;
+    BITMAP bm;
+    GetObject(image, sizeof(bm), &bm);
+    width = bm.bmWidth;
+    height = bm.bmHeight;
+    if (image != nullptr)
+    {
+        HDC hdcMem = CreateCompatibleDC(hdc);
+        HBITMAP hBitmapOld = (HBITMAP)SelectObject(hdcMem, image);
+        BitBlt(hdc, 0, 0, width, height, hdcMem, 0, 0, SRCCOPY);
+        SelectObject(hdcMem, hBitmapOld);
+        DeleteDC(hdcMem);
+    }
+}

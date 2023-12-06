@@ -5,6 +5,7 @@
 #include "Button.h"
 #include "RectangleAndEllipse.h"
 #include "SimulateGame.h"
+#include "GameSettings.h"
 
 class GameMenu
 {

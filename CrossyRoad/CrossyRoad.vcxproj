@@ -36,10 +36,12 @@
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="GameMenu.cpp" />
+    <ClCompile Include="GameSettings.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SimulateGame.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="TrafficLight.cpp" />
     <ClCompile Include="Train.cpp" />
@@ -48,11 +50,13 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="GameMenu.h" />
     <ClInclude Include="GameSave.h" />
+    <ClInclude Include="GameSettings.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RectangleAndEllipse.h" />
     <ClInclude Include="RNG.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="SimulateGame.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="TrafficLight.h" />

@@ -11,7 +11,7 @@ file structure:
 ...
 */
 
-bool readFromSave(const char* filename, Player &player) {
+bool readFromSave(string filename, Player &player) {
     std::ifstream is(filename);
     if (!is) {
         return false;
@@ -34,7 +34,7 @@ bool readFromSave(const char* filename, Player &player) {
     return true;
 }
 
-void saveToFile(const char* filename, Player &player) {
+void saveToFile(string filename, Player &player) {
     std::ofstream os(filename);
     os << player.GetPosX() << ' ' << player.GetPosY() << ' ' << player.GetLevel() << '\n';
     for (int i = 0; i < vecLanes.size(); ++i) {

@@ -467,7 +467,6 @@ bool simulate_game(HDC hdc, Input* input, float fTimeSinceStart, float fElapsedT
 
 void RunGameLoop(HDC hdc, int dem)
 {
-    if (dem == 2 && !running)  while (true) {}
     Input input = {};
     // Initialize game objects and other necessary variables here
     Sprite log("log.txt");
@@ -653,19 +652,19 @@ input.buttons[b].changed = true;\
     running = false;
 }
 
-void RunCreditsLoop(HDC hdc, int dem)
-{
-    HBITMAP creditsWindow;
-    BITMAP bm;
-    GetObject(image, sizeof(bm), &bm);
-    width = bm.bmWidth;
-    height = bm.bmHeight;
-    if (image != nullptr)
-    {
-        HDC hdcMem = CreateCompatibleDC(hdc);
-        HBITMAP hBitmapOld = (HBITMAP)SelectObject(hdcMem, image);
-        BitBlt(hdc, 0, 0, width, height, hdcMem, 0, 0, SRCCOPY);
-        SelectObject(hdcMem, hBitmapOld);
-        DeleteDC(hdcMem);
-    }
-}
+//void RunCreditsLoop(HDC hdc, int dem)
+//{
+//    HBITMAP creditsWindow;
+//    BITMAP bm;
+//    GetObject(image, sizeof(bm), &bm);
+//    width = bm.bmWidth;
+//    height = bm.bmHeight;
+//    if (image != nullptr)
+//    {
+//        HDC hdcMem = CreateCompatibleDC(hdc);
+//        HBITMAP hBitmapOld = (HBITMAP)SelectObject(hdcMem, image);
+//        BitBlt(hdc, 0, 0, width, height, hdcMem, 0, 0, SRCCOPY);
+//        SelectObject(hdcMem, hBitmapOld);
+//        DeleteDC(hdcMem);
+//    }
+//}

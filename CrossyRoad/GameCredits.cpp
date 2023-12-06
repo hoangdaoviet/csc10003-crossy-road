@@ -93,13 +93,20 @@ void GameCredits::OnPaint(HDC hdc, HWND hwnd) {
 
 void GameCredits::HandleCommand(int id) {
     if (id == 0) {
-        runningCredits = true;
+        isRunning = false;
     }
 }
-void RunCreditsLoop(HDC hdc, GameCredits *a, HWND hwnd) {
-    runningCredits = true;
-    while (runningCredits) {
-		a->OnPaint(hdc, hwnd);    
+void RunCreditsLoop(HDC hdc, GameCredits *a) {
+    a->isRunning = true;
+    a->DrawBackgroundWithButtons(hdc);
+    while (a->isRunning) 
+    {
+        MSG message;
+
+        while (PeekMessage(&message, 0, 0, 0, PM_REMOVE))
+        {
+            TranslateMessage(&message);
+            DispatchMessage(&message);
+        }
 	}
-    runningCredits = false;
 }

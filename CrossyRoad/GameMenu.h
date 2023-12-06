@@ -25,7 +25,6 @@ private:
     void setButtonImage();
     void createAButton(int i);
     void OnFileExit();
-    void DrawBackgroundWithButtons(HDC hdc);
 
 public:
     GameMenu();
@@ -43,6 +42,7 @@ public:
     void Initialize(HWND hwnd);
     void HandleCommand(int id);
     void OnPaint(HDC hdc, HWND hwnd);
+    void DrawBackgroundWithButtons(HDC hdc);
 
     // Other member functions for handling window messages can be defined here
 };

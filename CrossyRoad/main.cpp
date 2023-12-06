@@ -25,6 +25,15 @@ LRESULT CALLBACK window_callback(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPa
         case WM_COMMAND:
         {
             int id = LOWORD(wParam);
+            if (gameMenu->getRunningCredits())
+            {
+                gameCredits->HandleCommand(id);
+                if (gameCredits->isRunning == false)
+                {
+                    gameMenu->setRunningCredits(false);
+                    gameMenu->DrawBackgroundWithButtons(GetDC(hwnd));
+                }
+            }
             gameMenu->HandleCommand(id);
             if (gameMenu->getRunningNewGame())
             {
@@ -42,17 +51,18 @@ LRESULT CALLBACK window_callback(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPa
             }
             else if (gameMenu->getRunningCredits())
             {
-                //RunCreditsLoop(GetDC(hwnd), gameCredits, hwnd);
-                //gameMenu->setRunningCredits(false);
+                gameCredits->Initialize(hwnd);
+                RunCreditsLoop(GetDC(hwnd), gameCredits);
+                gameMenu->setRunningCredits(false);
 
-                //// Optionally, reinitialize the GameMenu after the game loop.
-                //delete gameMenu;
-                //gameMenu = new GameMenu();
-                //gameMenu->setRunningCredits(false);
-                //gameMenu->Initialize(hwnd);
+                // Optionally, reinitialize the GameMenu after the game loop.
+                delete gameMenu;
+                gameMenu = new GameMenu();
+                gameMenu->setRunningCredits(false);
+                gameMenu->Initialize(hwnd);
             
-                //// Additionally, repaint the window if needed.
-                //InvalidateRect(hwnd, NULL, TRUE);
+                // Additionally, repaint the window if needed.
+                InvalidateRect(hwnd, NULL, TRUE);
             }
             break;
         }
@@ -69,6 +79,7 @@ LRESULT CALLBACK window_callback(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPa
         case WM_DESTROY:
         {
             delete gameMenu;
+            delete gameCredits;
             PostQuitMessage(0);
             running = false;
             break;

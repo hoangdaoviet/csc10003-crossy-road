@@ -11,13 +11,14 @@ file structure:
 ...
 */
 
-bool readFromSave(string filename, Player &player) {
+bool readFromSave(string filename, Player &player, float &fSinceStart) {
+    vecLanes.clear();
     std::ifstream is(filename);
     if (!is) {
         return false;
     }
     int x, y, level;
-    is >> x >> y >> level;
+    is >> x >> y >> level >> fSinceStart;
     is.get();
     player.SetPosition(x, y);
     player.SetLevel(level);
@@ -34,10 +35,11 @@ bool readFromSave(string filename, Player &player) {
     return true;
 }
 
-void saveToFile(string filename, Player &player) {
+void saveToFile(string filename, Player &player, float fSinceStart) {
     std::ofstream os(filename);
-    os << player.GetPosX() << ' ' << player.GetPosY() << ' ' << player.GetLevel() << '\n';
+    os << player.GetPosX() << ' ' << player.GetPosY() << ' ' << player.GetLevel() << ' ' << fSinceStart << '\n';
     for (int i = 0; i < vecLanes.size(); ++i) {
         os << vecLanes[i].first << ' ' << vecLanes[i].second << '\n';
     }
+    os.close();
 }

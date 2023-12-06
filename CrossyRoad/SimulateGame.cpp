@@ -990,20 +990,3 @@ input.buttons[b].changed = true;\
     running = false;
 }
 
-/*
-void RunCreditsLoop(HDC hdc, int dem)
-{
-    HBITMAP creditsWindow;
-    BITMAP bm;
-    GetObject(image, sizeof(bm), &bm);
-    int width = bm.bmWidth;
-    int height = bm.bmHeight;
-    if (image != nullptr)
-    {
-        HDC hdcMem = CreateCompatibleDC(hdc);
-        HBITMAP hBitmapOld = (HBITMAP)SelectObject(hdcMem, image);
-        BitBlt(hdc, 0, 0, width, height, hdcMem, 0, 0, SRCCOPY);
-        SelectObject(hdcMem, hBitmapOld);
-        DeleteDC(hdcMem);
-    }
-} */

@@ -111,9 +111,39 @@ void GameMenu::setRunningNewGame(bool runningNewGame)
     this->runningNewGame = runningNewGame;
 }
 
+void GameMenu::setRunningLoadGame(bool runningLoadGame)
+{
+    this->runningLoadGame = runningLoadGame;
+}
+
+void GameMenu::setRunningSettings(bool runningSettings)
+{
+    this->runningSettings = runningSettings;
+}
+
+void GameMenu::setRunningCredits(bool runningCredits)
+{
+    this->runningCredits = runningCredits;
+}
+
 bool GameMenu::getRunningNewGame()
 {
     return runningNewGame;
+}
+
+bool GameMenu::getRunningLoadGame()
+{
+    return runningLoadGame;
+}
+
+bool GameMenu::getRunningSettings()
+{
+    return runningSettings;
+}
+
+bool GameMenu::getRunningCredits()
+{
+    return runningCredits;
 }
 
 void GameMenu::Initialize(HWND hwnd)
@@ -134,13 +164,13 @@ void GameMenu::HandleCommand(int id)
         runningNewGame = true;
         break;
     case 1:
-        OnButtonClick("Load Game");
+        runningLoadGame = true;
         break;
     case 2:
-        OnButtonClick("Settings");
+        runningSettings = true;
         break;
     case 3:
-        OnButtonClick("Credits");
+        runningCredits = true;
         break;
     case 4:
         OnFileExit();

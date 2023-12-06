@@ -40,8 +40,6 @@ LRESULT CALLBACK window_callback(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPa
             gameMenu->HandleCommand(id);
             if (gameMenu->getRunningNewGame())
             {
-              //  running = true;
-           // if (dem == 2 && running == true) while (true) {}
                 RunGameLoop(GetDC(hwnd), dem);
                 gameMenu->setRunningNewGame(false);
 
@@ -49,6 +47,19 @@ LRESULT CALLBACK window_callback(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPa
                 delete gameMenu;
                 gameMenu = new GameMenu();
                 gameMenu->setRunningNewGame(false);
+                gameMenu->Initialize(hwnd);
+                // Additionally, repaint the window if needed.
+                InvalidateRect(hwnd, NULL, TRUE);
+            }
+            else if (gameMenu->getRunningCredits())
+            {
+                RunCreditsLoop(GetDC(hwnd), dem);
+                gameMenu->setRunningCredits(false);
+
+                // Optionally, reinitialize the GameMenu after the game loop.
+                delete gameMenu;
+                gameMenu = new GameMenu();
+                gameMenu->setRunningCredits(false);
                 gameMenu->Initialize(hwnd);
                 //running = false;
                 // Additionally, repaint the window if needed.

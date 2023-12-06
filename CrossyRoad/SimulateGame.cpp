@@ -647,7 +647,7 @@ input.buttons[b].changed = true;\
                 draw_text("SCORE", 50, 360, 0x000000);
                 draw_rectangle(400, 360, 410, 370, 0x000000);
                 draw_rectangle(400, 400, 410, 410, 0x000000);
-                string strScore = to_string((player.GetLevel()) * 100);
+                string strScore = to_string((player.GetLevel()-1) * 100);
                 draw_text(strScore, 450, 360, 0x000000);
             }
 

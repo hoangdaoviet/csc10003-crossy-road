@@ -654,17 +654,72 @@ input.buttons[b].changed = true;\
 
 void RunCreditsLoop(HDC hdc)
 {
-    HBITMAP creditsWindow = (HBITMAP)LoadImage(NULL, L"CREDITSMENU.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
-    BITMAP bm;
-    GetObject(creditsWindow, sizeof(bm), &bm);
-    float width = bm.bmWidth;
-    float height = bm.bmHeight;
-    if (creditsWindow != nullptr)
-    {
-        HDC hdcMem = CreateCompatibleDC(hdc);
-        HBITMAP hBitmapOld = (HBITMAP)SelectObject(hdcMem, creditsWindow);
-        BitBlt(hdc, 0, 0, width, height, hdcMem, 0, 0, SRCCOPY);
-        SelectObject(hdcMem, hBitmapOld);
-        DeleteDC(hdcMem);
+    const char* filePath = "CREDITSMENU.bmp";
+
+    // Load the BMP file
+    HBITMAP hBitmap = (HBITMAP)LoadImageA(NULL, filePath, IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
+    if (hBitmap == NULL) {
+        std::cerr << "Failed to load the BMP file." << std::endl;
+        return;
+    }
+
+    // Get the dimensions of the BMP image
+    BITMAP bmp;
+    GetObject(hBitmap, sizeof(bmp), &bmp);
+
+    // Register window class
+    WNDCLASS wc = {};
+    wc.lpfnWndProc = WindowProc;
+    wc.hInstance = GetModuleHandle(NULL);
+    wc.hCursor = LoadCursor(NULL, IDC_ARROW);
+    wc.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
+    wc.lpszClassName = L"BMPWindowClass";
+
+    if (!RegisterClass(&wc)) {
+        std::cerr << "Failed to register window class." << std::endl;
+        DeleteObject(hBitmap); // Clean up resources
+        return;
+    }
+
+    // Create window
+    HWND hWnd = CreateWindowEx(
+        0,
+        L"BMPWindowClass",
+        L"BMP Image",
+        WS_OVERLAPPEDWINDOW,
+        CW_USEDEFAULT, CW_USEDEFAULT, bmp.bmWidth, bmp.bmHeight,
+        NULL, NULL, GetModuleHandle(NULL), NULL
+    );
+
+    if (hWnd == NULL) {
+        std::cerr << "Failed to create a window." << std::endl;
+        DeleteObject(hBitmap); // Clean up resources
+        return;
+    }
+
+    // Show the window
+    ShowWindow(hWnd, SW_SHOWNORMAL);
+    UpdateWindow(hWnd);
+
+    // Get window device context
+    HDC hdc = GetDC(hWnd);
+
+    // Draw the BMP image onto the window
+    HDC hdcMem = CreateCompatibleDC(hdc);
+    HBITMAP hOldBitmap = (HBITMAP)SelectObject(hdcMem, hBitmap);
+
+    StretchBlt(hdc, 0, 0, bmp.bmWidth, bmp.bmHeight, hdcMem, 0, 0, bmp.bmWidth, bmp.bmHeight, SRCCOPY);
+
+    // Clean up resources
+    SelectObject(hdcMem, hOldBitmap);
+    DeleteDC(hdcMem);
+    ReleaseDC(hWnd, hdc);
+    DeleteObject(hBitmap);
+
+    // Message loop
+    MSG msg;
+    while (GetMessage(&msg, NULL, 0, 0)) {
+        TranslateMessage(&msg);
+        DispatchMessage(&msg);
     }
 }

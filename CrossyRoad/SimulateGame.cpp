@@ -465,9 +465,8 @@ bool simulate_game(HDC hdc, Input* input, float fTimeSinceStart, float fElapsedT
     return false;
 }
 
-void RunGameLoop(HDC hdc, int dem)
+void RunGameLoop(HDC hdc)
 {
-    if (dem == 2 && !running)  while (true) {}
     Input input = {};
     // Initialize game objects and other necessary variables here
     Sprite log("log.txt");
@@ -653,9 +652,9 @@ input.buttons[b].changed = true;\
     running = false;
 }
 
-void RunCreditsLoop(HDC hdc, int dem)
+void RunCreditsLoop(HDC hdc)
 {
-    HBITMAP creditsWindow;
+    HBITMAP creditsWindow = (HBITMAP)LoadImage(NULL, L"CREDITSMENU.bmp", IMAGE_BITMAP, 0, 0, LR_LOADFROMFILE);
     BITMAP bm;
     GetObject(creditsWindow, sizeof(bm), &bm);
     float width = bm.bmWidth;

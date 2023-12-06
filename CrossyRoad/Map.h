@@ -251,6 +251,7 @@ struct Input
     Button_State buttons[BUTTON_COUNT];
 };
 static bool running = true;
+static bool runningCredits = true;
 
 struct Render_State
 {

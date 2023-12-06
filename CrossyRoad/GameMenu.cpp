@@ -54,14 +54,6 @@ void GameMenu::createAButton(int i)
     }
 }
 
-void GameMenu::OnButtonClick(const char* buttonName)
-{
-    // Handle button click event
-    std::ostringstream message;
-    message << buttonName << "";
-    MessageBox(hwnd, L"", L"", MB_OK);
-}
-
 void GameMenu::OnFileExit()
 {
     // Handle file exit event

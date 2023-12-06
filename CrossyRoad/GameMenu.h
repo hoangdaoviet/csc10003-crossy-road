@@ -24,7 +24,6 @@ private:
     static HBITMAP LoadBitmapImage(const wchar_t* filename);
     void setButtonImage();
     void createAButton(int i);
-    void OnButtonClick(const char* buttonName);
     void OnFileExit();
     void DrawBackgroundWithButtons(HDC hdc);
 

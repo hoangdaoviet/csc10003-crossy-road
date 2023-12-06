@@ -35,6 +35,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="GameCredits.cpp" />
     <ClCompile Include="GameMenu.cpp" />
     <ClCompile Include="GameSettings.cpp" />
     <ClCompile Include="main.cpp" />
@@ -48,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
+    <ClInclude Include="GameCredits.h" />
     <ClInclude Include="GameMenu.h" />
     <ClInclude Include="GameSave.h" />
     <ClInclude Include="GameSettings.h" />
@@ -64,11 +66,16 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="CREDITS.bmp" />
+    <Image Include="CREDITSMENU.bmp" />
     <Image Include="crossyroad.bmp" />
     <Image Include="EXIT.bmp" />
     <Image Include="LOADGAME.bmp" />
     <Image Include="NEWGAME.bmp" />
+    <Image Include="RETURNBUTTON.bmp" />
     <Image Include="SETTINGS.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="crossyroadtrack.mp3" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

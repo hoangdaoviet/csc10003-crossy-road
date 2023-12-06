@@ -29,5 +29,3 @@ bool simulate_game(HDC hdc, Input* input, float fTimeSinceStart, float fElapsedT
 	Sprite* horse, Sprite* water, Sprite* log, Sprite* cactus, Sprite* bush, Sprite* rock, bool* danger, Sprite* reverseHorseWagon);
 
 void RunGameLoop(HDC hdc);
-
-void RunCreditsLoop(HDC hdc);

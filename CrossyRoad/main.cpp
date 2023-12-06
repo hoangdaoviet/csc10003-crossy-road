@@ -3,21 +3,23 @@
 #include "player.h"
 #include "GameMenu.h"
 #include "SimulateGame.h"
+#include "GameCredits.h"
+#include "GameSettings.h"
 
 using namespace std;
-
-int dem = 0;
 
 LRESULT CALLBACK window_callback(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
     LRESULT result = 0;
     static GameMenu* gameMenu;
+    static GameCredits* gameCredits;
     switch (uMsg)
     {
         case WM_CREATE:
         {
             gameMenu = new GameMenu();
             gameMenu->Initialize(hwnd);
+            gameCredits = new GameCredits();
             break;
         }
         case WM_COMMAND:
@@ -40,7 +42,7 @@ LRESULT CALLBACK window_callback(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPa
             }
             else if (gameMenu->getRunningCredits())
             {
-                RunCreditsLoop(GetDC(hwnd));
+                RunCreditsLoop(GetDC(hwnd), gameCredits, hwnd);
                 gameMenu->setRunningCredits(false);
 
                 // Optionally, reinitialize the GameMenu after the game loop.
@@ -112,7 +114,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     // Create window
     // WS_THICKFRAME IS USED FOR RESIZING WINDOW
     // WS_MAXIMIZEBOX IS USED FOR MAXIMIZING THE WINDOW
-    HWND window = CreateWindow(window_class.lpszClassName, L"Crossy Road!", (WS_OVERLAPPEDWINDOW ^ WS_THICKFRAME ^ WS_MAXIMIZEBOX) | WS_VISIBLE, CW_USEDEFAULT, CW_USEDEFAULT, 1296, 759, 0, 0, hInstance, 0);
+    HWND window = CreateWindow(window_class.lpszClassName, L"Crossy Road!", (WS_OVERLAPPEDWINDOW ^ WS_THICKFRAME ^ WS_MAXIMIZEBOX) | WS_VISIBLE, CW_USEDEFAULT, CW_USEDEFAULT, 1200, 720, 0, 0, hInstance, 0);
     HDC hdc = GetDC(window);
     generateMap();
 

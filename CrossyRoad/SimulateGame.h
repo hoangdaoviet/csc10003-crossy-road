@@ -4,6 +4,7 @@
 #include "player.h"
 #include "Train.h"
 #include "TrafficLight.h"
+#include "GameSave.h"
 
 #define is_down(b) input->buttons[b].is_down
 #define	pressed(b) (input->buttons[b].is_down && input->buttons[b].changed)
@@ -21,7 +22,9 @@ void draw_player(int x0, int y0, int x1, int y1, vector<unsigned int>& player);
 
 void FillDanger(bool* danger, int x0, int y0, int x1, int y1);
 
-bool simulate_game(Input* input, float fTimeSinceStart, float fElapsedTime,
+void draw_text(string text, int StartX, int StartY, unsigned int color);
+
+bool simulate_game(HDC hdc, Input* input, float fTimeSinceStart, float fElapsedTime,
 	Player* player, vector<Train*> &vecTrain, vector<TrafficLight*> &vecLight,
 	Sprite* horse, Sprite* water, Sprite* log, Sprite* cactus, Sprite* bush, Sprite* rock, bool* danger, Sprite* reverseHorseWagon);
 

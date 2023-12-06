@@ -59,7 +59,37 @@ void FillDanger(bool* danger, int x0, int y0, int x1, int y1)
             danger[y * render_state.width + x] = true;
 }
 
-bool simulate_game(Input* input, float fTimeSinceStart, float fElapsedTime, 
+void draw_text(string text, int StartX, int StartY, unsigned int color)
+{
+    int TextSize = 10;
+
+    for (int i = 0; i < text.size(); i++)
+    {
+        string letter[7];
+        int idx = 0;
+
+        for (int row = (text[i] - 'A') * 7; row < (text[i] - 'A') * 7 + 7; row++)
+        {
+            letter[idx] = letters[row];
+            idx++;
+        }
+
+        for (int j = 6; j >= 0; j--)
+        {
+            int StartPosX = StartX + 10 * 6 * i;
+            int StartPosY = StartY + (6 - j) * 10;
+
+            for (char c : letter[j])
+            {
+                if (c == '0')
+                    draw_rectangle(StartPosX, StartPosY, StartPosX + TextSize, StartPosY + TextSize, color);
+                StartPosX += 10;
+            }
+        }
+    }
+}
+
+bool simulate_game(HDC hdc, Input* input, float fTimeSinceStart, float fElapsedTime, 
     Player* player, vector<Train*> &vecTrain, vector<TrafficLight*> &vecLight,
     Sprite* horse, Sprite* water, Sprite* log, Sprite* cactus, Sprite* bush, Sprite* rock, bool* danger, Sprite* reverseHorseWagon)
 {
@@ -90,7 +120,8 @@ bool simulate_game(Input* input, float fTimeSinceStart, float fElapsedTime,
     {
         playerX += CellSize;
     }
-    else if (pressed(BUTTON_ENTER)) {
+    else if (pressed(BUTTON_ENTER)) 
+    {
         running = false;
         return false;
     }
@@ -379,8 +410,10 @@ bool simulate_game(Input* input, float fTimeSinceStart, float fElapsedTime,
     {
         for (int i = 0; i < vecTrain.size(); i++)
         {
-            /*delete vecTrain[i];
-            delete vecLight[i];*/
+            delete vecTrain[i];
+            delete vecLight[i];
+            vecTrain[i] = nullptr;
+            vecLight[i] = nullptr;
         }
 
         vecTrain.clear();
@@ -486,6 +519,12 @@ void RunGameLoop(HDC hdc, int dem)
     auto tp2 = std::chrono::system_clock::now();
     float fSinceStart = 0.0f;
 
+    bool isSaveGame = false;
+    string UserName;
+    int size = 'Z' - 'A';
+    Button_State* InputName = new Button_State[size];
+
+    running = true;
     // Main game loop
     while (running) {
         tp2 = std::chrono::system_clock::now();
@@ -503,6 +542,9 @@ void RunGameLoop(HDC hdc, int dem)
         for (int i = 0; i < BUTTON_COUNT; i++)
             input.buttons[i].changed = false;
 
+        for (int i = 0; i < size; i++)
+            InputName[i].changed = false;
+
         while (PeekMessage(&message, 0, 0, 0, PM_REMOVE))
         {
             switch (message.message)
@@ -513,61 +555,91 @@ void RunGameLoop(HDC hdc, int dem)
                 unsigned int vk_code = (unsigned int)message.wParam;
                 bool is_down = ((message.lParam & (1 << 31)) == 0);
 
-                switch (vk_code)
+#define process_button(b, vk)\
+case vk: {\
+input.buttons[b].is_down = is_down;\
+input.buttons[b].changed = true;\
+}; break;
+
+                if (isSaveGame && 0x41 <= vk_code && vk_code <= 0x5A)
                 {
-                case VK_UP: {
-                    input.buttons[BUTTON_UP].changed = is_down != input.buttons[BUTTON_UP].is_down;
-                    input.buttons[BUTTON_UP].is_down = is_down;
-
-                } break;
-                case VK_DOWN: {
-                    input.buttons[BUTTON_DOWN].changed = is_down != input.buttons[BUTTON_DOWN].is_down;
-                    input.buttons[BUTTON_DOWN].is_down = is_down;
-                } break;
-                case VK_LEFT: {
-                    input.buttons[BUTTON_LEFT].changed = is_down != input.buttons[BUTTON_LEFT].is_down;
-                    input.buttons[BUTTON_LEFT].is_down = is_down;
-                } break;
-                case VK_RIGHT: {
-                    input.buttons[BUTTON_RIGHT].changed = is_down != input.buttons[BUTTON_RIGHT].is_down;
-                    input.buttons[BUTTON_RIGHT].is_down = is_down;
-                } break;
-                case VK_RETURN: {
-                    input.buttons[BUTTON_ENTER].changed = is_down != input.buttons[BUTTON_ENTER].is_down;
-                    input.buttons[BUTTON_ENTER].is_down = is_down;
-                } break;
-
+                    InputName[vk_code - 0x41].is_down = is_down;
+                    InputName[vk_code - 0x41].changed = true;
                 }
+                else
+                {
+                    switch (vk_code)
+                    {
+                        process_button(BUTTON_UP, VK_UP);
+                        process_button(BUTTON_DOWN, VK_DOWN);
+                        process_button(BUTTON_LEFT, VK_LEFT);
+                        process_button(BUTTON_RIGHT, VK_RIGHT);
+                        process_button(BUTTON_ENTER, VK_RETURN);
+                        process_button(BUTTON_ESCAPE, VK_ESCAPE);
+                        process_button(BUTTON_BACKSPACE, VK_BACK);
+                    }
+                }
+                
+
 
             } break;
-
-            default: {
+            default:
+            {
                 TranslateMessage(&message);
                 DispatchMessage(&message);
+            } break;
             }
-            }
-
         }
 
 
+        if (input.buttons[BUTTON_ESCAPE].is_down && input.buttons[BUTTON_ESCAPE].changed)
+            isSaveGame = true;
 
-        // Process input, simulate game, and render
-        fSinceStart += fElapsedTime;
-        bool dead = simulate_game(&input, fSinceStart, fElapsedTime, 
-            &player, vecTrain, vecLight,
-            &horse, &water, &log, &cactus, &bush, &rock, danger, &reverseHorseWagon);
+        if (isSaveGame)
+        {
+            // (input->buttons[b].is_down&& input->buttons[b].changed)
+            for (int i = 0; i < size; i++)
+            {
+                if (InputName[i].is_down && InputName[i].changed)
+                    UserName += i + 'A';
+            }
+            
+            if (input.buttons[BUTTON_BACKSPACE].is_down && input.buttons[BUTTON_BACKSPACE].changed)
+            {
+                if (UserName.size() > 0)
+                    UserName.pop_back();
+            }
+            
+            if (input.buttons[BUTTON_ENTER].is_down && input.buttons[BUTTON_ENTER].changed)
+            {
+                saveToFile(UserName, player);
+                running = false;
+            }
 
-        // ... (your existing game logic)
+            clear_screen(0xff0000);
+            draw_text("USERNAME", 50, 360, 0x000000);
+            draw_rectangle(530, 360, 540, 370, 0x00000);
+            draw_rectangle(530, 400, 540, 410, 0x00000);
+            draw_text(UserName, 550, 360, 0x000000);
+        }
+        else
+        {
+            fSinceStart += fElapsedTime;
+            bool dead = simulate_game(hdc, &input, fSinceStart, fElapsedTime,
+                &player, vecTrain, vecLight,
+                &horse, &water, &log, &cactus, &bush, &rock, danger, &reverseHorseWagon);
 
-        // Render only when needed
-        StretchDIBits(hdc, 0, 0, render_state.width, render_state.height, 0, 0, render_state.width, render_state.height, render_state.memory, &render_state.bitmap_info, DIB_RGB_COLORS, SRCCOPY);
+            if (dead)
+                Sleep(1000);
+            delete[] danger;
 
-        // Cleanup
-        if (dead)
-            Sleep(1000);
-        delete[] danger;
+        }
+
+        StretchDIBits(hdc, 0, 0, render_state.width, render_state.height,
+            0, 0, render_state.width, render_state.height, render_state.memory, &render_state.bitmap_info,
+            DIB_RGB_COLORS, SRCCOPY);
+
     }
-    running = true;
 
     for (int i = 0; i < vecTrain.size(); i++)
     {
@@ -577,6 +649,8 @@ void RunGameLoop(HDC hdc, int dem)
 
     vecTrain.resize(0);
     vecLight.resize(0);
+    delete[] InputName;
+    running = false;
 }
 
 void RunCreditsLoop(HDC hdc, int dem)

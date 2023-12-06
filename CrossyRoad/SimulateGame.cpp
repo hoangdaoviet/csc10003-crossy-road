@@ -465,7 +465,7 @@ bool simulate_game(HDC hdc, Input* input, float fTimeSinceStart, float fElapsedT
     return false;
 }
 
-void RunGameLoop(HDC hdc, int dem)
+void RunGameLoop(HDC hdc)
 {
     Input input = {};
     // Initialize game objects and other necessary variables here
@@ -652,7 +652,7 @@ input.buttons[b].changed = true;\
     running = false;
 }
 
-//void RunCreditsLoop(HDC hdc, int dem)
+//void RunCreditsLoop(HDC hdc)
 //{
 //    HBITMAP creditsWindow;
 //    BITMAP bm;

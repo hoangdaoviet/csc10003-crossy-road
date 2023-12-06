@@ -22,25 +22,11 @@ LRESULT CALLBACK window_callback(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPa
         }
         case WM_COMMAND:
         {
-         /*   int id = LOWORD(wParam);
-            gameMenu->HandleCommand(id);
-            if (gameMenu->getRunningNewGame())
-            {
-				RunGameLoop(GetDC(hwnd));
-				gameMenu->setRunningNewGame(false);
-
-			}
-            gameMenu = new GameMenu();
-            gameMenu->Initialize(hwnd);
-            gameMenu->OnPaint(GetDC(hwnd));
-
-            break;*/
             int id = LOWORD(wParam);
-            dem++;
             gameMenu->HandleCommand(id);
             if (gameMenu->getRunningNewGame())
             {
-                RunGameLoop(GetDC(hwnd), dem);
+                RunGameLoop(GetDC(hwnd));
                 gameMenu->setRunningNewGame(false);
 
                 // Optionally, reinitialize the GameMenu after the game loop.
@@ -48,12 +34,13 @@ LRESULT CALLBACK window_callback(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPa
                 gameMenu = new GameMenu();
                 gameMenu->setRunningNewGame(false);
                 gameMenu->Initialize(hwnd);
+
                 // Additionally, repaint the window if needed.
                 InvalidateRect(hwnd, NULL, TRUE);
             }
             else if (gameMenu->getRunningCredits())
             {
-                RunCreditsLoop(GetDC(hwnd), dem);
+                RunCreditsLoop(GetDC(hwnd));
                 gameMenu->setRunningCredits(false);
 
                 // Optionally, reinitialize the GameMenu after the game loop.
@@ -61,7 +48,7 @@ LRESULT CALLBACK window_callback(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPa
                 gameMenu = new GameMenu();
                 gameMenu->setRunningCredits(false);
                 gameMenu->Initialize(hwnd);
-                //running = false;
+
                 // Additionally, repaint the window if needed.
                 InvalidateRect(hwnd, NULL, TRUE);
             }

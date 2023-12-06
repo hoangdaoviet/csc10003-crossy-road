@@ -42,17 +42,17 @@ LRESULT CALLBACK window_callback(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lPa
             }
             else if (gameMenu->getRunningCredits())
             {
-                RunCreditsLoop(GetDC(hwnd), gameCredits, hwnd);
-                gameMenu->setRunningCredits(false);
+                //RunCreditsLoop(GetDC(hwnd), gameCredits, hwnd);
+                //gameMenu->setRunningCredits(false);
 
-                // Optionally, reinitialize the GameMenu after the game loop.
-                delete gameMenu;
-                gameMenu = new GameMenu();
-                gameMenu->setRunningCredits(false);
-                gameMenu->Initialize(hwnd);
+                //// Optionally, reinitialize the GameMenu after the game loop.
+                //delete gameMenu;
+                //gameMenu = new GameMenu();
+                //gameMenu->setRunningCredits(false);
+                //gameMenu->Initialize(hwnd);
             
-                // Additionally, repaint the window if needed.
-                InvalidateRect(hwnd, NULL, TRUE);
+                //// Additionally, repaint the window if needed.
+                //InvalidateRect(hwnd, NULL, TRUE);
             }
             break;
         }
@@ -114,7 +114,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
     // Create window
     // WS_THICKFRAME IS USED FOR RESIZING WINDOW
     // WS_MAXIMIZEBOX IS USED FOR MAXIMIZING THE WINDOW
-    HWND window = CreateWindow(window_class.lpszClassName, L"Crossy Road!", (WS_OVERLAPPEDWINDOW ^ WS_THICKFRAME ^ WS_MAXIMIZEBOX) | WS_VISIBLE, CW_USEDEFAULT, CW_USEDEFAULT, 1200, 720, 0, 0, hInstance, 0);
+    HWND window = CreateWindow(window_class.lpszClassName, L"Crossy Road!", (WS_OVERLAPPEDWINDOW ^ WS_THICKFRAME ^ WS_MAXIMIZEBOX) | WS_VISIBLE, CW_USEDEFAULT, CW_USEDEFAULT, 1296, 759, 0, 0, hInstance, 0);
     HDC hdc = GetDC(window);
     generateMap();
 

@@ -140,7 +140,7 @@ bool simulate_game(HDC hdc, Input* input, float fTimeSinceStart, float fElapsedT
 
     if (playerX < 0) playerX = 0;
     if (playerX > render_state.width - CellSize) playerX = render_state.width - CellSize;
-    if (playerX < 0) playerY = 0;
+    if (playerY < 0) playerY = 0;
     if (playerY > render_state.height - CellSize - 1) playerY = render_state.height - CellSize;
 
     bool isOnLog = false;
@@ -568,14 +568,15 @@ void RunGameLoop(HDC hdc, int dem)
 
 #define process_button(b, vk)\
 case vk: {\
+input.buttons[b].changed = input.buttons[b].is_down != is_down;\
 input.buttons[b].is_down = is_down;\
-input.buttons[b].changed = true;\
 }; break;
 
                 if (isSaveGame && 0x41 <= vk_code && vk_code <= 0x5A)
                 {
+                    InputName[vk_code - 0x41].changed = InputName[vk_code - 0x41].is_down != is_down;
                     InputName[vk_code - 0x41].is_down = is_down;
-                    InputName[vk_code - 0x41].changed = true;
+                    
                 }
                 else
                 {
@@ -708,14 +709,14 @@ void RunLoadGame(HDC hdc)
 
 #define process_button(b, vk)\
 case vk: {\
+input.buttons[b].changed = input.buttons[b].is_down != is_down;\
 input.buttons[b].is_down = is_down;\
-input.buttons[b].changed = true;\
 }; break;
 
                 if (isLoadGame && 0x41 <= vk_code && vk_code <= 0x5A)
                 {
+                    InputPath[vk_code - 0x41].changed = InputPath[vk_code - 0x41].changed != is_down;
                     InputPath[vk_code - 0x41].is_down = is_down;
-                    InputPath[vk_code - 0x41].changed = true;
                 }
                 else
                 {
@@ -881,14 +882,14 @@ input.buttons[b].changed = true;\
 
 #define process_button(b, vk)\
 case vk: {\
+input.buttons[b].changed = input.buttons[b].is_down != is_down;\
 input.buttons[b].is_down = is_down;\
-input.buttons[b].changed = true;\
 }; break;
 
                 if (isSaveGame && 0x41 <= vk_code && vk_code <= 0x5A)
                 {
+                    InputName[vk_code - 0x41].changed = InputName[vk_code - 0x41].changed != is_down;
                     InputName[vk_code - 0x41].is_down = is_down;
-                    InputName[vk_code - 0x41].changed = true;
                 }
                 else
                 {

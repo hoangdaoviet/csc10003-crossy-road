@@ -72,8 +72,11 @@ void Player::DrawPlayer(int x0, int y0, int x1, int y1)
 
         for (int x = x0; x < x1; x++)
         {
-            int idx = 80 * (y - y0) + (x - x0);
-            *pixel++ = picture[idx];
+            int idx = 80 * (80 - (y - y0) - 1) + (x - x0);
+            if (this->picture[idx] == 0xF2C488)
+                pixel++;
+            else
+                *pixel++ = picture[idx];
         }
     }
 }

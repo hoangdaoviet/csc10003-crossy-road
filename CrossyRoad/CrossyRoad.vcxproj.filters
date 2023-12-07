@@ -139,6 +139,12 @@
     <Text Include="train.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="trafficlight1.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="trafficlight2.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Image Include="CREDITS.bmp">

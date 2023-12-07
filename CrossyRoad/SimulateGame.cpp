@@ -454,7 +454,7 @@ bool simulate_game(HDC hdc, Input* input, float fTimeSinceStart, float fElapsedT
                 {
                     if (lane.second[i] == 'p')
                     {
-                        vecLight.push_back(new TrafficLight("trafficlight.txt", "trafficlight.txt", RED_LIGHT, 0));
+                        vecLight.push_back(new TrafficLight("trafficlight2.txt", "trafficlight1.txt", RED_LIGHT, 0));
                         vecLight[idx]->SetfTimeSinceLastLight(0);
                         vecLight[idx]->SetPosition(i * CellSize, y * CellSize);
                         break;
@@ -515,7 +515,7 @@ void RunGameLoop(HDC hdc, int dem)
             {
                 if (lane.second[i] == 'p')
                 {
-                    vecLight.push_back(new TrafficLight("trafficlight.txt", "trafficlight.txt", RED_LIGHT, 0));
+                    vecLight.push_back(new TrafficLight("trafficlight2.txt", "trafficlight1.txt", RED_LIGHT, 0));
                     vecLight[idx]->SetfTimeSinceLastLight(0);
                     vecLight[idx]->SetPosition(i * CellSize, y * CellSize);
                     break;

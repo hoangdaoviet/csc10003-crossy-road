@@ -30,6 +30,8 @@
     <Text Include="player.txt" />
     <Text Include="red_light.txt" />
     <Text Include="rock.txt" />
+    <Text Include="trafficlight1.txt" />
+    <Text Include="trafficlight2.txt" />
     <Text Include="train.txt" />
     <Text Include="water.txt" />
   </ItemGroup>

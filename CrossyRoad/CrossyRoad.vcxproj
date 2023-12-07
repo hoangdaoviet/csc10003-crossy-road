@@ -77,6 +77,7 @@
     <Image Include="SETTINGS.bmp" />
   </ItemGroup>
   <ItemGroup>
+    <Media Include="background.wav" />
     <Media Include="crossyroadtrack.mp3" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -171,6 +172,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ForceFileOutput>Enabled</ForceFileOutput>
+      <AdditionalDependencies>$(CoreLibraryDependencies);%(AdditionalDependencies);User32.lib;Winmm.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

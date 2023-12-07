@@ -176,5 +176,8 @@
     <Media Include="crossyroadtrack.mp3">
       <Filter>Resource Files</Filter>
     </Media>
+    <Media Include="background.wav">
+      <Filter>Resource Files</Filter>
+    </Media>
   </ItemGroup>
 </Project>

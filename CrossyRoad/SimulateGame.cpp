@@ -991,3 +991,26 @@ input.buttons[b].is_down = is_down;\
     running = false;
 }
 
+/*
+bool bEngineRunning = true;
+while(bEngineRunning)
+{
+    bEngineRunning = OnStartEvent();
+
+    while (bEngineRunning)
+    {
+        if (!OnInitializationEvent()) {
+            bEngineRunning = false;
+        }
+        if (!OnUpdateEvent()) {
+            bEngineRunning = false;
+        }
+        if (!OnRenderEvent()) {
+            bEngineRunning = false;
+        }
+    }
+
+    bEngineRunnig = !OnEndEvent();
+}
+
+*/

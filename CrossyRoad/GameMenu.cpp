@@ -57,7 +57,8 @@ void GameMenu::createAButton(int i)
 void GameMenu::OnFileExit()
 {
     // Handle file exit event
-    PostMessage(hwnd, WM_CLOSE, 0, 0);
+    if (MessageBox(hwnd, L"Do you want to exit game ?", L"", MB_OKCANCEL) == IDOK)
+        PostMessage(hwnd, WM_CLOSE, 0, 0);
 }
 
 void GameMenu::DrawBackgroundWithButtons(HDC hdc)

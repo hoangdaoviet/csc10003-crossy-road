@@ -9,17 +9,18 @@
 class GameSettings
 {
 	private:
-		static constexpr int numButton = 2;
+		static constexpr int numButton = 1;
 		HBITMAP hBackgroundBitmap;  // Bitmap for the background image
 		HWND hwnd;                  // Window handle
 		Button* buttons[numButton];
-		bool runningSettingsScreen = false;
+		bool runningCreditsScreen = false;
 		
 
 		//private functions
 		static HBITMAP LoadBitmapImage(const wchar_t* filename);
 		void setButtonImage();
 		void createAButton(int i);
+		void OnButtonClick(const char* buttonName);
 		void drawBackgroundWithButtons(HDC hdc);
 
 	public:

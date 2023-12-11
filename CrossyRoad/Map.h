@@ -218,88 +218,7 @@ string letters[] = {
 	" 0",
 	"0",
 	"0",
-	"0000",
-
-	"00000",
-	"0   0",
-	"0   0",
-	"0   0",
-	"0   0",
-	"0   0",
-	"00000",
-
-	"0",
-	"0",
-	"0",
-	"0",
-	"0",
-	"0",
-	"0",
-
-	"000000",
-	"0    0",
-	"    0",
-	"   0",
-	"  0",
-	" 0",
-	"000000",
-
-	"000000",
-	"     0",
-	"     0",
-	"000000",
-	"     0",
-	"     0",
-	"000000",
-
-	"    0",
-	"   00",
-	"  0 0",
-	" 0  0",
-	"000000",
-	"    0",
-	"    0",
-
-	"000000",
-	"0",
-	"0",
-	"000000",
-	"     0",
-	"     0",
-	"000000",
-
-	"000000",
-	"0",
-	"0",
-	"000000",
-	"0    0",
-	"0    0",
-	"000000",
-
-	"000000",
-	"     0",
-	"     0",
-	"     0",
-	"     0",
-	"     0",
-	"     0",
-
-	"000000",
-	"0    0",
-	"0    0",
-	"000000",
-	"0    0",
-	"0    0",
-	"000000",
-
-	"000000",
-	"0    0",
-	"0    0",
-	"000000",
-	"     0",
-	"     0",
-	"000000",
-
+	"0000"
 };
 
 static struct Button_State
@@ -332,6 +251,7 @@ struct Input
     Button_State buttons[BUTTON_COUNT];
 };
 static bool running = true;
+static bool runningCredits = true;
 
 struct Render_State
 {
@@ -350,7 +270,7 @@ vector<pair<float, string> > vecLanes;
 constexpr int MAP_HEIGHT = 9;
 constexpr int MAP_WIDTH = 19; //real width
 constexpr int MAP_WIDTH_ALLOWED = MAP_WIDTH - 3; //display width
-constexpr float LOWER_BOUND = 2.0f;
+constexpr float LOWER_BOUND = -3.0f;
 constexpr float UPPER_BOUND = 3.0f;
 
 //train
@@ -395,4 +315,4 @@ constexpr int MAX_DIST_RESPAWN_LOG_FROM_LEFT = 1;
 - 'l': log
 */
 
-void generateMap(int level);
+void generateMap();

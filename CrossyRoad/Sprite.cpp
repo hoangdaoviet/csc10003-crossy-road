@@ -145,3 +145,29 @@ void Sprite::Draw2ndPartSpriteAt(int x0, int y0, int x1, int y1)
         }
     }
 }
+
+void Sprite::DrawCredits(int x0, int y0, int x1, int y1)
+{
+    if (x0 >= render_state.width) return;
+    if (y0 >= render_state.height) return;
+    if (this->picture.size() <= 6400)
+        return;
+
+    int dx;
+    if (x0 < 0) dx = 0 - x0;
+    else dx = 0;
+
+    clip(x0, y0);
+    clip(x1, y1);
+    int idx = 0;
+
+    for (int y = y1 - 1; y > y0; y--)
+    {
+        unsigned int* pixel = (unsigned int*)render_state.memory + y * render_state.width + x0;
+
+        for (int x = x0; x < x1; x++)
+        {
+            *pixel++ = picture[idx++];
+        }
+    }
+}

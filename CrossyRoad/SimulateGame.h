@@ -28,8 +28,6 @@ bool simulate_game(HDC hdc, Input* input, float fTimeSinceStart, float fElapsedT
 	Player* player, vector<Train*> &vecTrain, vector<TrafficLight*> &vecLight,
 	Sprite* horse, Sprite* water, Sprite* log, Sprite* cactus, Sprite* bush, Sprite* rock, bool* danger, Sprite* reverseHorseWagon);
 
-void RunGameLoop(HDC hdc, int dem = 1);
+void RunGameLoop(HDC hdc);
 
-void RunLoadGame(HDC hdc);
-
-void RunCreditsLoop(HDC hdc, int dem = 1);
+void RunCreditsLoop(HDC hdc);

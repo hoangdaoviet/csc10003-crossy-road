@@ -12,7 +12,7 @@ public:
     void setVolume(double volumeLevel);
     double getVolume();
 private:
-    const std::string Path = "../media/music/";
+    const std::string Path = "";
     void setFilePath(std::string filePath);
     double volumeLevel;
     std::string filePath;

@@ -3,7 +3,7 @@
 //bool running = false;
 
 
-void generateMap() {
+void generateMap(int level) {
     vecLanes.clear();
     //draw empty vecLanes
     vecLanes.resize(MAP_HEIGHT);
@@ -16,6 +16,8 @@ void generateMap() {
     }
     for (int i = 1; i < vecLanes.size() - 1; i++) {
         int rowType = rig(0, (railwayNum > 0 ? 3 : 2)); //0: pavement, 1: road, 2: river, 3: railway
+        int type = rig(0, 1);
+
         if (rowType == 0) {
             vecLanes[i].first = 0.0f;
             for (int j = 0; j < MAP_WIDTH; ++j) {
@@ -23,24 +25,30 @@ void generateMap() {
             }
         }
         else if (rowType == 1) {
-            vecLanes[i].first = rfg(LOWER_BOUND, UPPER_BOUND);
+            if (type == 0)
+                vecLanes[i].first = rfg(LOWER_BOUND + level, UPPER_BOUND + level);
+            else if (type == 1)
+                vecLanes[i].first = rfg(-UPPER_BOUND - level, -LOWER_BOUND - level);
+
             for (int j = 0; j < MAP_WIDTH; ++j) {
                 vecLanes[i].second += "-";
             }
         }
         else if (rowType == 2) {
-            vecLanes[i].first = rfg(LOWER_BOUND, UPPER_BOUND);
+            if (type == 0)
+                vecLanes[i].first = rfg(LOWER_BOUND + level, UPPER_BOUND + level);
+            else if (type == 1)
+                vecLanes[i].first = rfg(-UPPER_BOUND - level, -LOWER_BOUND - level);
+
             for (int j = 0; j < MAP_WIDTH; ++j) {
                 vecLanes[i].second += "~";
             }
         }
         else if (rowType == 3) {
-            int type = rig(0, 1);
-
             if (type == 0)
-                vecLanes[i].first = rfg(LOWER_BOUND_TRAIN, UPPER_BOUND_TRAIN);
+                vecLanes[i].first = rfg(LOWER_BOUND_TRAIN + level, UPPER_BOUND_TRAIN + level);
             else if (type == 1)
-                vecLanes[i].first = rfg(-UPPER_BOUND_TRAIN, -LOWER_BOUND_TRAIN);
+                vecLanes[i].first = rfg(-UPPER_BOUND_TRAIN - level, -LOWER_BOUND_TRAIN - level);
 
             railwayNum--;
             for (int j = 0; j < MAP_WIDTH; ++j) {

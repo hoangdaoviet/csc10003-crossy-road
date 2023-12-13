@@ -27,15 +27,10 @@ public:
     void Initialize(HWND hwnd);
     void OnPaint(HDC hdc, HWND hwnd);
     void DrawBackgroundWithButtons(HDC hdc);
-    bool getRunning()
+    bool getIsRunning()
     {
         return isRunning;
     }
-    void setRunning(bool f)
-    {
-        isRunning = f;
-    }
-    void openMainMenu();
 
     // Other member functions for handling window messages can be defined here
 };

@@ -94,7 +94,6 @@ void GameCredits::OnPaint(HDC hdc, HWND hwnd) {
 void GameCredits::HandleCommand(int id) {
     if (id == 0) {
         isRunning = false;
-        //openMainMenu();
     }
 }
 void RunCreditsLoop(HDC hdc, GameCredits *a) {
@@ -110,9 +109,4 @@ void RunCreditsLoop(HDC hdc, GameCredits *a) {
             DispatchMessage(&message);
         }
 	}
-}
-
-void GameCredits::openMainMenu()
-{
-    PostMessage(hwnd, WM_CLOSE, 0, 0);
 }

@@ -15,5 +15,4 @@ public:
 	Sprite(string fileName);
 	void Draw1stPartSpriteAt(int x0, int y0, int x1, int y1);
 	void Draw2ndPartSpriteAt(int x0, int y0, int x1, int y1);
-	void DrawCredits(int x0, int y0, int x1, int y1);
 };
